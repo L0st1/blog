@@ -1,1 +1,1 @@
-export { default } from "file:///D:/Downloads/nuxt3-full-ts-blog/node_modules/.pnpm/@nuxt+vite-builder@3.20.2_@_5ebd12923b65ab01982927faa7d93a00/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
+export { default } from "file:///E:/project/blog/node_modules/.pnpm/@nuxt+vite-builder@3.20.2_@_5ebd12923b65ab01982927faa7d93a00/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
