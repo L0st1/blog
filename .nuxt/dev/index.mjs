@@ -4,7 +4,10 @@ import path, { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
 import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, getResponseStatusText } from 'file://E:/project/blog/node_modules/.pnpm/h3@1.15.5/node_modules/h3/dist/index.mjs';
-import { escapeHtml } from 'file://E:/project/blog/node_modules/.pnpm/@vue+shared@3.5.26/node_modules/@vue/shared/dist/shared.cjs.js';
+import { escapeHtml as escapeHtml$1 } from 'file://E:/project/blog/node_modules/.pnpm/@vue+shared@3.5.26/node_modules/@vue/shared/dist/shared.cjs.js';
+import MarkdownIt from 'file://E:/project/blog/node_modules/.pnpm/markdown-it@14.1.0/node_modules/markdown-it/index.mjs';
+import shikiPlugin from 'file://E:/project/blog/node_modules/.pnpm/@shikijs+markdown-it@3.21.0/node_modules/@shikijs/markdown-it/dist/index.mjs';
+import mathjax3 from 'file://E:/project/blog/node_modules/.pnpm/markdown-it-mathjax3@5.2.0/node_modules/markdown-it-mathjax3/dist/index.js';
 import fs, { promises } from 'node:fs';
 import matter from 'file://E:/project/blog/node_modules/.pnpm/gray-matter@4.0.3/node_modules/gray-matter/index.js';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://E:/project/blog/node_modules/.pnpm/vue-bundle-renderer@2.2.0/node_modules/vue-bundle-renderer/dist/runtime.mjs';
@@ -652,7 +655,10 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {}
+  "public": {
+    "mathjaxMode": "ssr",
+    "mathjaxOutput": "svg"
+  }
 };
 const envOptions = {
   prefix: "NITRO_",
@@ -1683,7 +1689,7 @@ function lazyCachedFunction(fn) {
     return res;
   };
 }
-function getRenderer(ssrContext) {
+function getRenderer$1(ssrContext) {
   return ssrContext.noSSR ? getSPARenderer() : getSSRRenderer();
 }
 const getSSRStyles = lazyCachedFunction(() => Promise.resolve().then(function () { return styles$1; }).then((r) => r.default || r));
@@ -2184,7 +2190,7 @@ async function shutdown() {
 const _messages = { "appName": "Nuxt", "version": "", "statusCode": 500, "statusMessage": "Server error", "description": "This page is temporarily unavailable." };
 const template$1 = (messages) => {
   messages = { ..._messages, ...messages };
-  return '<!DOCTYPE html><html lang="en"><head><title>' + escapeHtml(messages.statusCode) + " - " + escapeHtml(messages.statusMessage) + " | " + escapeHtml(messages.appName) + `</title><meta charset="utf-8"><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0" name="viewport"><style>.spotlight{background:linear-gradient(45deg,#00dc82,#36e4da 50%,#0047e1);filter:blur(20vh)}*,:after,:before{border-color:var(--un-default-border-color,#e5e7eb);border-style:solid;border-width:0;box-sizing:border-box}:after,:before{--un-content:""}html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-moz-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}body{line-height:inherit;margin:0}h1{font-size:inherit;font-weight:inherit}h1,p{margin:0}*,:after,:before{--un-rotate:0;--un-rotate-x:0;--un-rotate-y:0;--un-rotate-z:0;--un-scale-x:1;--un-scale-y:1;--un-scale-z:1;--un-skew-x:0;--un-skew-y:0;--un-translate-x:0;--un-translate-y:0;--un-translate-z:0;--un-pan-x: ;--un-pan-y: ;--un-pinch-zoom: ;--un-scroll-snap-strictness:proximity;--un-ordinal: ;--un-slashed-zero: ;--un-numeric-figure: ;--un-numeric-spacing: ;--un-numeric-fraction: ;--un-border-spacing-x:0;--un-border-spacing-y:0;--un-ring-offset-shadow:0 0 transparent;--un-ring-shadow:0 0 transparent;--un-shadow-inset: ;--un-shadow:0 0 transparent;--un-ring-inset: ;--un-ring-offset-width:0px;--un-ring-offset-color:#fff;--un-ring-width:0px;--un-ring-color:rgba(147,197,253,.5);--un-blur: ;--un-brightness: ;--un-contrast: ;--un-drop-shadow: ;--un-grayscale: ;--un-hue-rotate: ;--un-invert: ;--un-saturate: ;--un-sepia: ;--un-backdrop-blur: ;--un-backdrop-brightness: ;--un-backdrop-contrast: ;--un-backdrop-grayscale: ;--un-backdrop-hue-rotate: ;--un-backdrop-invert: ;--un-backdrop-opacity: ;--un-backdrop-saturate: ;--un-backdrop-sepia: }.fixed{position:fixed}.-bottom-1\\/2{bottom:-50%}.left-0{left:0}.right-0{right:0}.grid{display:grid}.mb-16{margin-bottom:4rem}.mb-8{margin-bottom:2rem}.h-1\\/2{height:50%}.max-w-520px{max-width:520px}.min-h-screen{min-height:100vh}.place-content-center{place-content:center}.overflow-hidden{overflow:hidden}.bg-white{--un-bg-opacity:1;background-color:rgb(255 255 255/var(--un-bg-opacity))}.px-8{padding-left:2rem;padding-right:2rem}.text-center{text-align:center}.text-8xl{font-size:6rem;line-height:1}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-black{--un-text-opacity:1;color:rgb(0 0 0/var(--un-text-opacity))}.font-light{font-weight:300}.font-medium{font-weight:500}.leading-tight{line-height:1.25}.font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}@media(prefers-color-scheme:dark){.dark\\:bg-black{--un-bg-opacity:1;background-color:rgb(0 0 0/var(--un-bg-opacity))}.dark\\:text-white{--un-text-opacity:1;color:rgb(255 255 255/var(--un-text-opacity))}}@media(min-width:640px){.sm\\:px-0{padding-left:0;padding-right:0}.sm\\:text-4xl{font-size:2.25rem;line-height:2.5rem}}</style><script>!function(){const e=document.createElement("link").relList;if(!(e&&e.supports&&e.supports("modulepreload"))){for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver((e=>{for(const o of e)if("childList"===o.type)for(const e of o.addedNodes)"LINK"===e.tagName&&"modulepreload"===e.rel&&r(e)})).observe(document,{childList:!0,subtree:!0})}function r(e){if(e.ep)return;e.ep=!0;const r=function(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),"use-credentials"===e.crossOrigin?r.credentials="include":"anonymous"===e.crossOrigin?r.credentials="omit":r.credentials="same-origin",r}(e);fetch(e.href,r)}}();<\/script></head><body class="antialiased bg-white dark:bg-black dark:text-white font-sans grid min-h-screen overflow-hidden place-content-center text-black"><div class="-bottom-1/2 fixed h-1/2 left-0 right-0 spotlight"></div><div class="max-w-520px text-center"><h1 class="font-medium mb-8 sm:text-10xl text-8xl">` + escapeHtml(messages.statusCode) + '</h1><p class="font-light leading-tight mb-16 px-8 sm:px-0 sm:text-4xl text-xl">' + escapeHtml(messages.description) + "</p></div></body></html>";
+  return '<!DOCTYPE html><html lang="en"><head><title>' + escapeHtml$1(messages.statusCode) + " - " + escapeHtml$1(messages.statusMessage) + " | " + escapeHtml$1(messages.appName) + `</title><meta charset="utf-8"><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0" name="viewport"><style>.spotlight{background:linear-gradient(45deg,#00dc82,#36e4da 50%,#0047e1);filter:blur(20vh)}*,:after,:before{border-color:var(--un-default-border-color,#e5e7eb);border-style:solid;border-width:0;box-sizing:border-box}:after,:before{--un-content:""}html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-moz-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}body{line-height:inherit;margin:0}h1{font-size:inherit;font-weight:inherit}h1,p{margin:0}*,:after,:before{--un-rotate:0;--un-rotate-x:0;--un-rotate-y:0;--un-rotate-z:0;--un-scale-x:1;--un-scale-y:1;--un-scale-z:1;--un-skew-x:0;--un-skew-y:0;--un-translate-x:0;--un-translate-y:0;--un-translate-z:0;--un-pan-x: ;--un-pan-y: ;--un-pinch-zoom: ;--un-scroll-snap-strictness:proximity;--un-ordinal: ;--un-slashed-zero: ;--un-numeric-figure: ;--un-numeric-spacing: ;--un-numeric-fraction: ;--un-border-spacing-x:0;--un-border-spacing-y:0;--un-ring-offset-shadow:0 0 transparent;--un-ring-shadow:0 0 transparent;--un-shadow-inset: ;--un-shadow:0 0 transparent;--un-ring-inset: ;--un-ring-offset-width:0px;--un-ring-offset-color:#fff;--un-ring-width:0px;--un-ring-color:rgba(147,197,253,.5);--un-blur: ;--un-brightness: ;--un-contrast: ;--un-drop-shadow: ;--un-grayscale: ;--un-hue-rotate: ;--un-invert: ;--un-saturate: ;--un-sepia: ;--un-backdrop-blur: ;--un-backdrop-brightness: ;--un-backdrop-contrast: ;--un-backdrop-grayscale: ;--un-backdrop-hue-rotate: ;--un-backdrop-invert: ;--un-backdrop-opacity: ;--un-backdrop-saturate: ;--un-backdrop-sepia: }.fixed{position:fixed}.-bottom-1\\/2{bottom:-50%}.left-0{left:0}.right-0{right:0}.grid{display:grid}.mb-16{margin-bottom:4rem}.mb-8{margin-bottom:2rem}.h-1\\/2{height:50%}.max-w-520px{max-width:520px}.min-h-screen{min-height:100vh}.place-content-center{place-content:center}.overflow-hidden{overflow:hidden}.bg-white{--un-bg-opacity:1;background-color:rgb(255 255 255/var(--un-bg-opacity))}.px-8{padding-left:2rem;padding-right:2rem}.text-center{text-align:center}.text-8xl{font-size:6rem;line-height:1}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-black{--un-text-opacity:1;color:rgb(0 0 0/var(--un-text-opacity))}.font-light{font-weight:300}.font-medium{font-weight:500}.leading-tight{line-height:1.25}.font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}@media(prefers-color-scheme:dark){.dark\\:bg-black{--un-bg-opacity:1;background-color:rgb(0 0 0/var(--un-bg-opacity))}.dark\\:text-white{--un-text-opacity:1;color:rgb(255 255 255/var(--un-text-opacity))}}@media(min-width:640px){.sm\\:px-0{padding-left:0;padding-right:0}.sm\\:text-4xl{font-size:2.25rem;line-height:2.5rem}}</style><script>!function(){const e=document.createElement("link").relList;if(!(e&&e.supports&&e.supports("modulepreload"))){for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver((e=>{for(const o of e)if("childList"===o.type)for(const e of o.addedNodes)"LINK"===e.tagName&&"modulepreload"===e.rel&&r(e)})).observe(document,{childList:!0,subtree:!0})}function r(e){if(e.ep)return;e.ep=!0;const r=function(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),"use-credentials"===e.crossOrigin?r.credentials="include":"anonymous"===e.crossOrigin?r.credentials="omit":r.credentials="same-origin",r}(e);fetch(e.href,r)}}();<\/script></head><body class="antialiased bg-white dark:bg-black dark:text-white font-sans grid min-h-screen overflow-hidden place-content-center text-black"><div class="-bottom-1/2 fixed h-1/2 left-0 right-0 spotlight"></div><div class="max-w-520px text-center"><h1 class="font-medium mb-8 sm:text-10xl text-8xl">` + escapeHtml$1(messages.statusCode) + '</h1><p class="font-light leading-tight mb-16 px-8 sm:px-0 sm:text-4xl text-xl">' + escapeHtml$1(messages.description) + "</p></div></body></html>";
 };
 
 const error500 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2213,20 +2219,138 @@ function loadPosts() {
     const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
     const { data, content } = matter(raw);
     return {
-      slug: file.replace(/\.md$/, ""),
+      // 将 Windows 反斜杠替换为正斜杠，确保 URL 兼容
+      slug: file.replace(/\.md$/, "").replace(/\\/g, "/"),
       meta: data,
       body: content
     };
   });
 }
 
-const ____slug__get = defineEventHandler((event) => {
+let ssrRenderer = null;
+let clientRenderer = null;
+async function getRenderer(mode) {
+  if (mode === "client") {
+    return clientRenderer != null ? clientRenderer : clientRenderer = await createClientRenderer();
+  }
+  return ssrRenderer != null ? ssrRenderer : ssrRenderer = await createSsrRenderer();
+}
+async function createClientRenderer() {
+  const md = MarkdownIt({
+    html: true,
+    // 允许 HTML 标签
+    linkify: true,
+    // 自动识别链接
+    typographer: false
+    // 关闭智能标点，避免干扰 LaTeX 语法
+  });
+  md.use(await shikiPlugin({
+    themes: { light: "github-light", dark: "github-dark" }
+  }));
+  return md;
+}
+async function createSsrRenderer() {
+  const output = (process.env.MATHJAX_OUTPUT || "svg").toLowerCase();
+  const md = MarkdownIt({
+    html: true,
+    linkify: true,
+    typographer: false
+  });
+  const mathjaxOptions = {
+    tex: {
+      inlineMath: [["$", "$"]],
+      // 行内公式分隔符
+      displayMath: [["$$", "$$"]],
+      // 块级公式分隔符
+      tags: "ams"
+      // 公式编号风格
+    }
+  };
+  if (output === "chtml") {
+    mathjaxOptions.chtml = {
+      displayAlign: "center",
+      displayIndent: "0"
+    };
+  } else {
+    mathjaxOptions.svg = {
+      scale: 1,
+      // 1x 基准缩放，避免二次缩放模糊
+      minScale: 1,
+      // 不向下缩放
+      exFactor: 0.5,
+      // ex 尺寸因子（接近默认值）
+      displayAlign: "center",
+      displayIndent: "0",
+      fontCache: "local"
+      // 局部缓存，减少不同尺寸复用导致的失真
+    };
+  }
+  md.use(mathjax3, mathjaxOptions);
+  md.use(await shikiPlugin({
+    themes: { light: "github-light", dark: "github-dark" }
+  }));
+  return md;
+}
+const PLACEHOLDER = {
+  BLOCK: "%%MATH_BLOCK_",
+  INLINE: "%%MATH_INLINE_"
+};
+function protectMath(content) {
+  const formulas = [];
+  let text = content.replace(/\$\$([\s\S]+?)\$\$/g, (match) => {
+    formulas.push(match);
+    return `${PLACEHOLDER.BLOCK}${formulas.length - 1}%%`;
+  });
+  text = text.replace(/\$([^\$\n]+?)\$/g, (match) => {
+    formulas.push(match);
+    return `${PLACEHOLDER.INLINE}${formulas.length - 1}%%`;
+  });
+  return { text, formulas };
+}
+function restoreMath(html, formulas) {
+  html = html.replace(
+    new RegExp(`${PLACEHOLDER.BLOCK}(\\d+)%%`, "g"),
+    (_, idx) => {
+      const formula = formulas[parseInt(idx)];
+      return `<div class="math-tex math-block">${escapeHtml(formula)}</div>`;
+    }
+  );
+  html = html.replace(
+    new RegExp(`${PLACEHOLDER.INLINE}(\\d+)%%`, "g"),
+    (_, idx) => {
+      const formula = formulas[parseInt(idx)];
+      return `<span class="math-tex math-inline">${escapeHtml(formula)}</span>`;
+    }
+  );
+  return html;
+}
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+async function renderMarkdown(content) {
+  const mode = (process.env.MATHJAX_MODE || "ssr").toLowerCase();
+  if (mode === "client") {
+    const { text, formulas } = protectMath(content);
+    const renderer2 = await getRenderer("client");
+    const html = renderer2.render(text);
+    return restoreMath(html, formulas);
+  }
+  const renderer = await getRenderer("ssr");
+  return renderer.render(content);
+}
+
+const ____slug__get = defineEventHandler(async (event) => {
   const slug = getRouterParam(event, "slug");
   const post = loadPosts().find((p) => p.slug === slug);
   if (!post) {
     throw createError({ statusCode: 404, statusMessage: "Post not found" });
   }
-  return post;
+  const html = await renderMarkdown(post.body);
+  return {
+    slug: post.slug,
+    meta: post.meta,
+    html
+  };
 });
 
 const ____slug__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2322,7 +2446,7 @@ const renderer = defineRenderHandler(async (event) => {
   if (routeOptions.ssr === false) {
     ssrContext.noSSR = true;
   }
-  const renderer = await getRenderer(ssrContext);
+  const renderer = await getRenderer$1(ssrContext);
   const _rendered = await renderer.renderToString(ssrContext).catch(async (error) => {
     if (ssrContext._renderResponse && error.message === "skipping render") {
       return {};

@@ -6,14 +6,25 @@
     "dev": "nuxi dev",
     "build": "nuxi build",
     "generate": "nuxi generate",
-    "typecheck": "nuxi typecheck"
+    "typecheck": "nuxi typecheck",
+    "dev:ssr:svg": "cross-env MATHJAX_MODE=ssr MATHJAX_OUTPUT=svg nuxi dev",
+    "dev:ssr:chtml": "cross-env MATHJAX_MODE=ssr MATHJAX_OUTPUT=chtml nuxi dev",
+    "dev:client:svg": "cross-env MATHJAX_MODE=client MATHJAX_OUTPUT=svg nuxi dev",
+    "dev:client:chtml": "cross-env MATHJAX_MODE=client MATHJAX_OUTPUT=chtml nuxi dev"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
+    "markdown-it-mathjax3": "^5.2.0",
+    "markdown-it-texmath": "^1.0.0",
     "nuxt": "^3.10.0"
   },
   "devDependencies": {
+    "@shikijs/markdown-it": "^3.21.0",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.0.9",
+    "cross-env": "^7.0.3",
+    "markdown-it": "^14.1.0",
+    "shiki": "^3.21.0",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.2.2"
   }

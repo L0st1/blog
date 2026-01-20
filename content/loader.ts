@@ -21,7 +21,8 @@ export function loadPosts(): Post[] {
       const { data, content } = matter(raw)
 
       return {
-        slug: file.replace(/\.md$/, ''),
+        // 将 Windows 反斜杠替换为正斜杠，确保 URL 兼容
+        slug: file.replace(/\.md$/, '').replace(/\\/g, '/'),
         meta: data as PostMeta,
         body: content
       }

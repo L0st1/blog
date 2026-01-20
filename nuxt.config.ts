@@ -8,5 +8,11 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/blog/**': { prerender: true }
+  },
+  runtimeConfig: {
+    public: {
+      mathjaxMode: process.env.MATHJAX_MODE || 'ssr',      // 'ssr' | 'client'
+      mathjaxOutput: process.env.MATHJAX_OUTPUT || 'svg'   // 'svg' | 'chtml'
+    }
   }
 })

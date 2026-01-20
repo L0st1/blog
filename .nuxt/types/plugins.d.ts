@@ -21,6 +21,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_d716557a2852652e2d0d445ebac7dda7/node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.client.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_c8aa7c3573e66ead08e6ab4241336ee6/node_modules/nuxt/dist/app/plugins/warn.dev.server.js")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_c8aa7c3573e66ead08e6ab4241336ee6/node_modules/nuxt/dist/app/plugins/check-if-layout-used.js")> &
+  InjectionType<typeof import("../../plugins/mathjax.client")> &
   InjectionType<typeof import("../../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_c8aa7c3573e66ead08e6ab4241336ee6/node_modules/nuxt/dist/pages/runtime/plugins/prerender.server.js")>
 
 declare module '#app' {

@@ -72,7 +72,9 @@ declare module 'nuxt/schema' {
    },
   }
   interface PublicRuntimeConfig {
+   mathjaxMode: string,
 
+   mathjaxOutput: string,
   }
 }
 declare module 'vue' {

@@ -1,1 +1,11 @@
+# 依赖
 node_modules
+
+# Nuxt 构建产物（不需要提交）
+.nuxt
+.output
+dist
+
+# 其他
+*.log
+.DS_Store
