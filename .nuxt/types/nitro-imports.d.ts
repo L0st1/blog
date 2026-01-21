@@ -93,9 +93,7 @@ declare global {
   const readMultipartFormData: typeof import('../../node_modules/.pnpm/h3@1.15.5/node_modules/h3').readMultipartFormData
   const readRawBody: typeof import('../../node_modules/.pnpm/h3@1.15.5/node_modules/h3').readRawBody
   const readValidatedBody: typeof import('../../node_modules/.pnpm/h3@1.15.5/node_modules/h3').readValidatedBody
-  const rehypeRestoreMath: typeof import('../../server/utils/rehype-restore-math').default
   const removeResponseHeader: typeof import('../../node_modules/.pnpm/h3@1.15.5/node_modules/h3').removeResponseHeader
-  const renderMarkdown: typeof import('../../server/utils/markdown').renderMarkdown
   const runTask: typeof import('../../node_modules/.pnpm/nitropack@2.13.1_better-sqlite3@12.6.2/node_modules/nitropack/dist/runtime/internal/task').runTask
   const sanitizeStatusCode: typeof import('../../node_modules/.pnpm/h3@1.15.5/node_modules/h3').sanitizeStatusCode
   const sanitizeStatusMessage: typeof import('../../node_modules/.pnpm/h3@1.15.5/node_modules/h3').sanitizeStatusMessage
@@ -150,5 +148,3 @@ export { defineAppConfig } from 'E:/project/blog/node_modules/.pnpm/@nuxt+nitro-
 export { queryCollection, queryCollectionSearchSections, queryCollectionNavigation, queryCollectionItemSurroundings } from 'E:/project/blog/node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/@nuxt/content/dist/runtime/nitro';
 export { parseMarkdown } from 'E:/project/blog/node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/@nuxtjs/mdc/dist/runtime/parser';
 export { stringifyMarkdown } from 'E:/project/blog/node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/@nuxtjs/mdc/dist/runtime/stringify';
-export { renderMarkdown } from 'E:/project/blog/server/utils/markdown';
-export { default as rehypeRestoreMath } from 'E:/project/blog/server/utils/rehype-restore-math';
