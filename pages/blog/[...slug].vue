@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import type { PostMeta } from '~/content/schema'
+import type { ContentCollectionItem } from '@nuxt/content'
 
-interface PostResponse {
-  slug: string
-  meta: PostMeta
-  html: string
+type Post = ContentCollectionItem & {
+  date?: string
+  tags?: string[]
 }
 
 const route = useRoute()
-// 处理数组形式的 slug，如 ['2026', 'hello-world']
 const slug = Array.isArray(route.params.slug) 
   ? route.params.slug.join('/') 
   : route.params.slug
 
-const { data: post } = await useAsyncData<PostResponse>(`post-${slug}`, () =>
-  $fetch(`/api/posts/${slug}`)
-)
+const { data: post } = await useAsyncData(`post-${slug}`, () =>
+  queryCollection('content').path(`/${slug}`).first()
+) as { data: Ref<Post | null> }
 
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found' })
@@ -28,19 +26,18 @@ if (!post.value) {
     <aside class="sidebar sidebar-left">
       <div class="sidebar-content">
         <h3>文章信息</h3>
-        <p>发布日期: {{ post?.meta.date }}</p>
-        <p>标签: {{ post?.meta.tags?.join(', ') }}</p>
-        <!-- 在这里添加更多左侧内容 -->
+        <p>发布日期: {{ post?.date }}</p>
+        <p>标签: {{ post?.tags?.join(', ') }}</p>
       </div>
     </aside>
 
-    <!-- 中间主内容区域 - Markdown 渲染区 -->
+    <!-- 中间主内容区域 -->
     <main class="main-content">
       <article v-if="post" class="prose">
-        <h1>{{ post.meta.title }}</h1>
-        <p class="summary">{{ post.meta.summary }}</p>
-        <!-- Markdown 渲染内容 -->
-        <div class="markdown-body" v-html="post.html" />
+        <h1>{{ post.title }}</h1>
+        <p class="summary">{{ post.description }}</p>
+        <!-- Nuxt Content 渲染组件 -->
+        <ContentRenderer :value="post" />
       </article>
     </main>
 
@@ -48,13 +45,13 @@ if (!post.value) {
     <aside class="sidebar sidebar-right">
       <div class="sidebar-content">
         <h3>目录</h3>
-        <!-- 这里可以添加文章目录 -->
         <nav class="toc">
-          <p>文章目录将显示在这里</p>
+          <ul v-if="post?.body?.toc?.links">
+            <li v-for="link in post.body.toc.links" :key="link.id">
+              <a :href="`#${link.id}`">{{ link.text }}</a>
+            </li>
+          </ul>
         </nav>
-        
-        <h3>相关文章</h3>
-        <!-- 这里可以添加相关文章推荐 -->
       </div>
     </aside>
   </div>

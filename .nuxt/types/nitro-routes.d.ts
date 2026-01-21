@@ -3,17 +3,23 @@ import type { Serialize, Simplify } from "nitropack/types";
 declare module "nitropack/types" {
   type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
   interface InternalApi {
-    '/api/posts/**:slug': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/posts/[...slug].get').default>>>>
-    }
-    '/api/posts': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/posts/index.get').default>>>>
-    }
     '/__nuxt_error': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxt+nitro-server@3.20.2_d_4fce06721a2e77d5f837aad3fc7c4e7f/node_modules/@nuxt/nitro-server/dist/runtime/handlers/renderer').default>>>>
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxt+nitro-server@3.20.2_b_7577a36b0f340406d45dc3c170c89725/node_modules/@nuxt/nitro-server/dist/runtime/handlers/renderer').default>>>>
     }
     '/__nuxt_island/**': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/#internal/nuxt/island-renderer').default>>>>
+    }
+    '/__nuxt_content/content/sql_dump.txt': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/@nuxt/content/dist/runtime/presets/node/database-handler').default>>>>
+    }
+    '/__nuxt_content/info/sql_dump.txt': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/@nuxt/content/dist/runtime/presets/node/database-handler').default>>>>
+    }
+    '/__nuxt_content/content/query': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/@nuxt/content/dist/runtime/api/query.post').default>>>>
+    }
+    '/__nuxt_content/info/query': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/@nuxt/content/dist/runtime/api/query.post').default>>>>
     }
   }
 }

@@ -1,15 +1,10 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { tmpdir } from 'node:os';
 import { Server } from 'node:http';
-import path, { resolve, dirname, join } from 'node:path';
+import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, getResponseStatusText } from 'file://E:/project/blog/node_modules/.pnpm/h3@1.15.5/node_modules/h3/dist/index.mjs';
-import { escapeHtml as escapeHtml$1 } from 'file://E:/project/blog/node_modules/.pnpm/@vue+shared@3.5.26/node_modules/@vue/shared/dist/shared.cjs.js';
-import MarkdownIt from 'file://E:/project/blog/node_modules/.pnpm/markdown-it@14.1.0/node_modules/markdown-it/index.mjs';
-import shikiPlugin from 'file://E:/project/blog/node_modules/.pnpm/@shikijs+markdown-it@3.21.0/node_modules/@shikijs/markdown-it/dist/index.mjs';
-import mathjax3 from 'file://E:/project/blog/node_modules/.pnpm/markdown-it-mathjax3@5.2.0/node_modules/markdown-it-mathjax3/dist/index.js';
-import fs, { promises } from 'node:fs';
-import matter from 'file://E:/project/blog/node_modules/.pnpm/gray-matter@4.0.3/node_modules/gray-matter/index.js';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, getRouterParam, setHeader, getResponseStatus, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatusText } from 'file://E:/project/blog/node_modules/.pnpm/h3@1.15.5/node_modules/h3/dist/index.mjs';
+import { escapeHtml } from 'file://E:/project/blog/node_modules/.pnpm/@vue+shared@3.5.26/node_modules/@vue/shared/dist/shared.cjs.js';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://E:/project/blog/node_modules/.pnpm/vue-bundle-renderer@2.2.0/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file://E:/project/blog/node_modules/.pnpm/ufo@1.6.3/node_modules/ufo/dist/index.mjs';
 import process$1 from 'node:process';
@@ -25,8 +20,8 @@ import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingP
 import { createHooks } from 'file://E:/project/blog/node_modules/.pnpm/hookable@5.5.3/node_modules/hookable/dist/index.mjs';
 import { createFetch, Headers as Headers$1 } from 'file://E:/project/blog/node_modules/.pnpm/ofetch@1.5.1/node_modules/ofetch/dist/node.mjs';
 import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file://E:/project/blog/node_modules/.pnpm/node-mock-http@1.0.4/node_modules/node-mock-http/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file://E:/project/blog/node_modules/.pnpm/unstorage@1.17.4_db0@0.3.4_ioredis@5.9.2/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file://E:/project/blog/node_modules/.pnpm/unstorage@1.17.4_db0@0.3.4_ioredis@5.9.2/node_modules/unstorage/drivers/fs.mjs';
+import { createStorage, prefixStorage } from 'file://E:/project/blog/node_modules/.pnpm/unstorage@1.17.4_db0@0.3.4__0ba8e1e42d7904aded0dac519710669d/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file://E:/project/blog/node_modules/.pnpm/unstorage@1.17.4_db0@0.3.4__0ba8e1e42d7904aded0dac519710669d/node_modules/unstorage/drivers/fs.mjs';
 import { digest } from 'file://E:/project/blog/node_modules/.pnpm/ohash@2.0.11/node_modules/ohash/dist/index.mjs';
 import { toRouteMatcher, createRouter } from 'file://E:/project/blog/node_modules/.pnpm/radix3@1.1.2/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
@@ -37,9 +32,11 @@ import { SourceMapConsumer } from 'file://E:/project/blog/node_modules/.pnpm/sou
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { getContext } from 'file://E:/project/blog/node_modules/.pnpm/unctx@2.5.0/node_modules/unctx/dist/index.mjs';
 import { captureRawStackTrace, parseRawStackTrace } from 'file://E:/project/blog/node_modules/.pnpm/errx@0.1.0/node_modules/errx/dist/index.js';
+import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname as dirname$1, resolve as resolve$1 } from 'file://E:/project/blog/node_modules/.pnpm/pathe@2.0.3/node_modules/pathe/dist/index.mjs';
+import { dirname as dirname$1, resolve as resolve$1, isAbsolute } from 'file://E:/project/blog/node_modules/.pnpm/pathe@2.0.3/node_modules/pathe/dist/index.mjs';
 import { walkResolver } from 'file://E:/project/blog/node_modules/.pnpm/unhead@2.1.2/node_modules/unhead/dist/utils.mjs';
+import localAdapter from 'file://E:/project/blog/node_modules/.pnpm/db0@0.3.4_better-sqlite3@12.6.2/node_modules/db0/dist/connectors/better-sqlite3.mjs';
 
 const serverAssets = [{"baseName":"server","dir":"E:/project/blog/server/assets"}];
 
@@ -641,6 +638,14 @@ const _inlineRuntimeConfig = {
         "cache": false
       },
       "/blog/**": {
+        "prerender": true,
+        "swr": false
+      },
+      "/__nuxt_content/**": {
+        "robots": false,
+        "cache": false
+      },
+      "/__nuxt_content/content/sql_dump.txt": {
         "prerender": true
       },
       "/_nuxt/builds/meta/**": {
@@ -656,8 +661,62 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "mathjaxMode": "ssr",
-    "mathjaxOutput": "svg"
+    "mdc": {
+      "components": {
+        "prose": true,
+        "map": {},
+        "customElements": []
+      },
+      "headings": {
+        "anchorLinks": {
+          "h1": false,
+          "h2": true,
+          "h3": true,
+          "h4": true,
+          "h5": false,
+          "h6": false
+        }
+      },
+      "highlight": {
+        "noApiRoute": true,
+        "highlighter": "shiki",
+        "theme": {
+          "default": "github-light",
+          "dark": "github-dark"
+        },
+        "shikiEngine": "oniguruma",
+        "langs": [
+          "js",
+          "jsx",
+          "json",
+          "ts",
+          "tsx",
+          "vue",
+          "css",
+          "html",
+          "bash",
+          "md",
+          "mdc",
+          "yaml"
+        ]
+      }
+    },
+    "content": {
+      "wsUrl": ""
+    }
+  },
+  "content": {
+    "databaseVersion": "v3.5.0",
+    "version": "3.11.0",
+    "database": {
+      "type": "sqlite",
+      "filename": "./contents.sqlite"
+    },
+    "localDatabase": {
+      "type": "sqlite",
+      "filename": "E:/project/blog/.data/content/contents.sqlite"
+    },
+    "integrityCheck": true
   }
 };
 const envOptions = {
@@ -1387,7 +1446,7 @@ const devReducers = {
   URL: (data) => data instanceof URL ? data.toString() : void 0
 };
 const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
-const _H6yauTp2Kco8g78An4BOZJ_2ae2RhNagln4yFIGHPUY = (nitroApp) => {
+const _PJGEjmj5WnwAsEQYSVi1hmIhusJplvCIGEIMbJJ_M_k = (nitroApp) => {
   const handler = nitroApp.h3App.handler;
   nitroApp.h3App.handler = (event) => {
     return asyncContext.callAsync({ logs: [], event }, () => handler(event));
@@ -1458,7 +1517,7 @@ function onConsoleLog(callback) {
 
 const plugins = [
   _dlMBkuxOGRjwqitDfdBC5pHnJRZkVMZIWbplhnnRGTw,
-_H6yauTp2Kco8g78An4BOZJ_2ae2RhNagln4yFIGHPUY
+_PJGEjmj5WnwAsEQYSVi1hmIhusJplvCIGEIMbJJ_M_k
 ];
 
 const assets = {};
@@ -1486,7 +1545,7 @@ function getAsset (id) {
 
 const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
 const EncodingMap = { gzip: ".gz", br: ".br" };
-const _pgJzWK = eventHandler((event) => {
+const _bXhggj = eventHandler((event) => {
   if (event.method && !METHODS.has(event.method)) {
     return;
   }
@@ -1689,7 +1748,7 @@ function lazyCachedFunction(fn) {
     return res;
   };
 }
-function getRenderer$1(ssrContext) {
+function getRenderer(ssrContext) {
   return ssrContext.noSSR ? getSPARenderer() : getSSRRenderer();
 }
 const getSSRStyles = lazyCachedFunction(() => Promise.resolve().then(function () { return styles$1; }).then((r) => r.default || r));
@@ -1871,17 +1930,461 @@ async function getIslandContext(event) {
   return ctx;
 }
 
-const _lazy_fNzN_m = () => Promise.resolve().then(function () { return ____slug__get$1; });
-const _lazy_dM7U06 = () => Promise.resolve().then(function () { return index_get$1; });
-const _lazy_uvnIf9 = () => Promise.resolve().then(function () { return renderer$1; });
+const _1bZXq_ = eventHandler(async (event) => {
+  const collection = getRouterParam(event, "collection") || event.path?.split("/")?.[2] || "";
+  setHeader(event, "Content-Type", "text/plain");
+  const data = await useStorage().getItem(`build:content:database.compressed.mjs`) || "";
+  if (data) {
+    const lineStart = `export const ${collection} = "`;
+    const content = String(data).split("\n").find((line) => line.startsWith(lineStart));
+    if (content) {
+      return content.substring(lineStart.length, content.length - 1);
+    }
+  }
+  return await import('file://E:/project/blog/.nuxt/content/database.compressed.mjs').then((m) => m[collection]);
+});
+
+async function decompressSQLDump(base64Str, compressionType = "gzip") {
+  let binaryData;
+  if (typeof Buffer !== "undefined") {
+    const buffer = Buffer.from(base64Str, "base64");
+    binaryData = Uint8Array.from(buffer);
+  } else if (typeof atob !== "undefined") {
+    binaryData = Uint8Array.from(atob(base64Str), (c) => c.charCodeAt(0));
+  } else {
+    throw new TypeError("No base64 decoding method available");
+  }
+  const response = new Response(new Blob([binaryData]));
+  const decompressedStream = response.body?.pipeThrough(new DecompressionStream(compressionType));
+  const text = await new Response(decompressedStream).text();
+  return JSON.parse(text);
+}
+
+const checksums = {
+  "content": "v3.5.0--pQxLk8eeqGiZwFD9gq6k1NeVymUUdY8FfTYKxjqI1qk"
+};
+const checksumsStructure = {
+  "content": "pHKxGl0GlLYVO_vq55OSHsBwxh33kIPKr_LMDTF-0d0"
+};
+const tables = {
+  "content": "_content_content",
+  "info": "_content_info"
+};
+const contentManifest = {
+  "content": {
+    "type": "page",
+    "fields": {
+      "id": "string",
+      "title": "string",
+      "body": "json",
+      "date": "string",
+      "description": "string",
+      "extension": "string",
+      "meta": "json",
+      "navigation": "json",
+      "path": "string",
+      "seo": "json",
+      "stem": "string",
+      "tags": "json"
+    }
+  },
+  "info": {
+    "type": "data",
+    "fields": {}
+  }
+};
+
+async function fetchContent(event, collection, path, options) {
+  const headers = event ? getRequestHeaders(event) : {};
+  const url = `/__nuxt_content/${collection}/${path}`;
+  const fetchOptions = {
+    ...options,
+    headers: {
+      ...headers,
+      ...options.headers
+    },
+    query: { v: checksums[String(collection)], t: Date.now()  }
+  };
+  return event ? await event.$fetch(url, fetchOptions) : await $fetch(url, fetchOptions);
+}
+async function fetchDatabase(event, collection) {
+  return fetchContent(event, collection, "sql_dump.txt", {
+    responseType: "text",
+    headers: {
+      "content-type": "text/plain"
+    }
+  });
+}
+
+function refineContentFields(sql, doc) {
+  const fields = findCollectionFields(sql);
+  const item = { ...doc };
+  for (const key in item) {
+    if (fields[key] === "json" && item[key] && item[key] !== "undefined") {
+      item[key] = JSON.parse(item[key]);
+    }
+    if (fields[key] === "boolean" && item[key] !== "undefined") {
+      item[key] = Boolean(item[key]);
+    }
+  }
+  for (const key in item) {
+    if (item[key] === "NULL") {
+      item[key] = void 0;
+    }
+  }
+  return item;
+}
+function findCollectionFields(sql) {
+  const table = sql.match(/FROM\s+(\w+)/);
+  if (!table) {
+    return {};
+  }
+  const info = contentManifest[getCollectionName(table[1])];
+  return info?.fields || {};
+}
+function getCollectionName(table) {
+  return table.replace(/^_content_/, "");
+}
+
+let db;
+function loadDatabaseAdapter(config) {
+  const { database, localDatabase } = config;
+  if (!db) {
+    {
+      db = localAdapter(refineDatabaseConfig(localDatabase));
+    }
+  }
+  return {
+    all: async (sql, params = []) => {
+      return db.prepare(sql).all(...params).then((result) => (result || []).map((item) => refineContentFields(sql, item)));
+    },
+    first: async (sql, params = []) => {
+      return db.prepare(sql).get(...params).then((item) => item ? refineContentFields(sql, item) : item);
+    },
+    exec: async (sql, params = []) => {
+      return db.prepare(sql).run(...params);
+    }
+  };
+}
+const checkDatabaseIntegrity = /* @__PURE__ */ new Map();
+const integrityCheckPromise = /* @__PURE__ */ new Map();
+async function checkAndImportDatabaseIntegrity(event, collection, config) {
+  if (checkDatabaseIntegrity.get(collection) !== false) {
+    checkDatabaseIntegrity.set(collection, false);
+    if (!integrityCheckPromise.has(collection)) {
+      const _integrityCheck = _checkAndImportDatabaseIntegrity(event, collection, checksums[collection], checksumsStructure[collection], config).then((isValid) => {
+        checkDatabaseIntegrity.set(collection, !isValid);
+      }).catch((error) => {
+        console.error("Database integrity check failed", error);
+        checkDatabaseIntegrity.set(collection, true);
+        integrityCheckPromise.delete(collection);
+      });
+      integrityCheckPromise.set(collection, _integrityCheck);
+    }
+  }
+  if (integrityCheckPromise.has(collection)) {
+    await integrityCheckPromise.get(collection);
+  }
+}
+async function _checkAndImportDatabaseIntegrity(event, collection, integrityVersion, structureIntegrityVersion, config) {
+  const db2 = loadDatabaseAdapter(config);
+  const before = await db2.first(`SELECT * FROM ${tables.info} WHERE id = ?`, [`checksum_${collection}`]).catch(() => null);
+  if (before?.version && !String(before.version)?.startsWith(`${config.databaseVersion}--`)) {
+    await db2.exec(`DROP TABLE IF EXISTS ${tables.info}`);
+    before.version = "";
+  }
+  const unchangedStructure = before?.structureVersion === structureIntegrityVersion;
+  if (before?.version) {
+    if (before.version === integrityVersion) {
+      if (before.ready) {
+        return true;
+      }
+      await waitUntilDatabaseIsReady(db2, collection);
+      return true;
+    }
+    await db2.exec(`DELETE FROM ${tables.info} WHERE id = ?`, [`checksum_${collection}`]);
+    if (!unchangedStructure) {
+      await db2.exec(`DROP TABLE IF EXISTS ${tables[collection]}`);
+    }
+  }
+  const dump = await loadDatabaseDump(event, collection).then(decompressSQLDump);
+  const dumpLinesHash = dump.map((row) => row.split(" -- ").pop());
+  let hashesInDb = /* @__PURE__ */ new Set();
+  if (unchangedStructure) {
+    const hashListFromTheDump = new Set(dumpLinesHash);
+    const hashesInDbRecords = await db2.all(`SELECT __hash__ FROM ${tables[collection]}`).catch(() => []);
+    hashesInDb = new Set(hashesInDbRecords.map((r) => r.__hash__));
+    const hashesToDelete = hashesInDb.difference(hashListFromTheDump);
+    if (hashesToDelete.size) {
+      await db2.exec(`DELETE FROM ${tables[collection]} WHERE __hash__ IN (${Array(hashesToDelete.size).fill("?").join(",")})`, Array.from(hashesToDelete));
+    }
+  }
+  await dump.reduce(async (prev, sql, index) => {
+    await prev;
+    const hash = dumpLinesHash[index];
+    const statement = sql.substring(0, sql.length - hash.length - 4);
+    if (unchangedStructure) {
+      if (hash === "structure") {
+        return Promise.resolve();
+      }
+      if (hashesInDb.has(hash)) {
+        return Promise.resolve();
+      }
+    }
+    await db2.exec(statement).catch((err) => {
+      const message = err.message || "Unknown error";
+      console.error(`Failed to execute SQL ${sql}: ${message}`);
+    });
+  }, Promise.resolve());
+  const after = await db2.first(`SELECT version FROM ${tables.info} WHERE id = ?`, [`checksum_${collection}`]).catch(() => ({ version: "" }));
+  return after?.version === integrityVersion;
+}
+const REQUEST_TIMEOUT = 90;
+async function waitUntilDatabaseIsReady(db2, collection) {
+  let iterationCount = 0;
+  let interval;
+  await new Promise((resolve, reject) => {
+    interval = setInterval(async () => {
+      const row = await db2.first(`SELECT ready FROM ${tables.info} WHERE id = ?`, [`checksum_${collection}`]).catch(() => ({ ready: true }));
+      if (row?.ready) {
+        clearInterval(interval);
+        resolve(0);
+      }
+      if (iterationCount++ > REQUEST_TIMEOUT) {
+        clearInterval(interval);
+        reject(new Error("Waiting for another database initialization timed out"));
+      }
+    }, 1e3);
+  }).catch((e) => {
+    throw e;
+  }).finally(() => {
+    if (interval) {
+      clearInterval(interval);
+    }
+  });
+}
+async function loadDatabaseDump(event, collection) {
+  return await fetchDatabase(event, collection).catch((e) => {
+    console.error("Failed to fetch compressed dump", e);
+    return "";
+  });
+}
+function refineDatabaseConfig(config) {
+  if (config.type === "d1") {
+    return { ...config, bindingName: config.bindingName || config.binding };
+  }
+  if (config.type === "sqlite") {
+    const _config = { ...config };
+    if (config.filename === ":memory:") {
+      return { name: ":memory:" };
+    }
+    if ("filename" in config) {
+      const filename = isAbsolute(config?.filename || "") || config?.filename === ":memory:" ? config?.filename : new URL(config.filename, globalThis._importMeta_.url).pathname;
+      _config.path = process.platform === "win32" && filename.startsWith("/") ? filename.slice(1) : filename;
+    }
+    return _config;
+  }
+  if (config.type === "pglite") {
+    return {
+      dataDir: config.dataDir,
+      // Pass through any other PGlite-specific options
+      ...config
+    };
+  }
+  return config;
+}
+
+const SQL_COMMANDS = /SELECT|INSERT|UPDATE|DELETE|DROP|ALTER|\$/i;
+const SQL_COUNT_REGEX = /COUNT\((DISTINCT )?([a-z_]\w+|\*)\)/i;
+const SQL_SELECT_REGEX = /^SELECT (.*) FROM (\w+)( WHERE .*)? ORDER BY (["\w,\s]+) (ASC|DESC)( LIMIT \d+)?( OFFSET \d+)?$/;
+function assertSafeQuery(sql, collection) {
+  if (!sql) {
+    throw new Error("Invalid query: Query cannot be empty");
+  }
+  const cleanedupQuery = cleanupQuery(sql);
+  if (cleanedupQuery !== sql) {
+    throw new Error("Invalid query: SQL comments are not allowed");
+  }
+  const match = sql.match(SQL_SELECT_REGEX);
+  if (!match) {
+    throw new Error("Invalid query: Query must be a valid SELECT statement with proper syntax");
+  }
+  const [_, select, from, where, orderBy, order, limit, offset] = match;
+  const columns = select?.trim().split(", ") || [];
+  if (columns.length === 1) {
+    if (columns[0] !== "*" && !columns[0]?.match(SQL_COUNT_REGEX) && !columns[0]?.match(/^"[a-z_]\w+"$/i)) {
+      throw new Error(`Invalid query: Column '${columns[0]}' has invalid format. Expected *, COUNT(), or a quoted column name`);
+    }
+  } else if (!columns.every((column) => column.match(/^"[a-z_]\w+"$/i))) {
+    throw new Error("Invalid query: Multiple columns must be properly quoted and alphanumeric");
+  }
+  if (from !== `_content_${collection}`) {
+    const collection2 = String(from || "").replace(/^_content_/, "");
+    throw new Error(`Invalid query: Collection '${collection2}' does not exist`);
+  }
+  if (where) {
+    if (!where.startsWith(" WHERE (") || !where.endsWith(")")) {
+      throw new Error("Invalid query: WHERE clause must be properly enclosed in parentheses");
+    }
+    const noString = cleanupQuery(where, { removeString: true });
+    if (noString.match(SQL_COMMANDS)) {
+      throw new Error("Invalid query: WHERE clause contains unsafe SQL commands");
+    }
+  }
+  const _order = (orderBy + " " + order).split(", ");
+  if (!_order.every((column) => column.match(/^("[a-zA-Z_]+"|[a-zA-Z_]+) (ASC|DESC)$/))) {
+    throw new Error("Invalid query: ORDER BY clause must contain valid column names followed by ASC or DESC");
+  }
+  if (limit !== void 0 && !limit.match(/^ LIMIT \d+$/)) {
+    throw new Error("Invalid query: LIMIT clause must be a positive number");
+  }
+  if (offset !== void 0 && !offset.match(/^ OFFSET \d+$/)) {
+    throw new Error("Invalid query: OFFSET clause must be a positive number");
+  }
+  return true;
+}
+function cleanupQuery(query, options = { removeString: false }) {
+  let inString = false;
+  let stringFence = "";
+  let result = "";
+  for (let i = 0; i < query.length; i++) {
+    const char = query[i];
+    const prevChar = query[i - 1];
+    const nextChar = query[i + 1];
+    if (char === "'" || char === '"') {
+      if (!options?.removeString) {
+        result += char;
+        continue;
+      }
+      if (inString) {
+        if (char !== stringFence || nextChar === stringFence || prevChar === stringFence) {
+          continue;
+        }
+        inString = false;
+        stringFence = "";
+        continue;
+      } else {
+        inString = true;
+        stringFence = char;
+        continue;
+      }
+    }
+    if (!inString) {
+      if (char === "-" && nextChar === "-") {
+        return result;
+      }
+      if (char === "/" && nextChar === "*") {
+        i += 2;
+        while (i < query.length && !(query[i] === "*" && query[i + 1] === "/")) {
+          i += 1;
+        }
+        i += 2;
+        continue;
+      }
+      result += char;
+    }
+  }
+  return result;
+}
+
+function defineRenderHandler(render) {
+  const runtimeConfig = useRuntimeConfig();
+  return eventHandler(async (event) => {
+    const nitroApp = useNitroApp();
+    const ctx = { event, render, response: void 0 };
+    await nitroApp.hooks.callHook("render:before", ctx);
+    if (!ctx.response) {
+      if (event.path === `${runtimeConfig.app.baseURL}favicon.ico`) {
+        setResponseHeader(event, "Content-Type", "image/x-icon");
+        return send(
+          event,
+          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        );
+      }
+      ctx.response = await ctx.render(event);
+      if (!ctx.response) {
+        const _currentStatus = getResponseStatus(event);
+        setResponseStatus(event, _currentStatus === 200 ? 500 : _currentStatus);
+        return send(
+          event,
+          "No response returned from render handler: " + event.path
+        );
+      }
+    }
+    await nitroApp.hooks.callHook("render:response", ctx.response, ctx);
+    if (ctx.response.headers) {
+      setResponseHeaders(event, ctx.response.headers);
+    }
+    if (ctx.response.statusCode || ctx.response.statusMessage) {
+      setResponseStatus(
+        event,
+        ctx.response.statusCode,
+        ctx.response.statusMessage
+      );
+    }
+    return ctx.response.body;
+  });
+}
+
+const scheduledTasks = false;
+
+const tasks = {
+  
+};
+
+const __runningTasks__ = {};
+async function runTask(name, {
+  payload = {},
+  context = {}
+} = {}) {
+  if (__runningTasks__[name]) {
+    return __runningTasks__[name];
+  }
+  if (!(name in tasks)) {
+    throw createError({
+      message: `Task \`${name}\` is not available!`,
+      statusCode: 404
+    });
+  }
+  if (!tasks[name].resolve) {
+    throw createError({
+      message: `Task \`${name}\` is not implemented!`,
+      statusCode: 501
+    });
+  }
+  const handler = await tasks[name].resolve();
+  const taskEvent = { name, payload, context };
+  __runningTasks__[name] = handler.run(taskEvent);
+  try {
+    const res = await __runningTasks__[name];
+    return res;
+  } finally {
+    delete __runningTasks__[name];
+  }
+}
+
+const _fE_WZI = eventHandler(async (event) => {
+  const { sql } = await readBody(event);
+  const collection = getRouterParam(event, "collection") || event.path?.split("/")?.[2] || "";
+  assertSafeQuery(sql, collection);
+  const conf = useRuntimeConfig().content;
+  if (conf.integrityCheck) {
+    await checkAndImportDatabaseIntegrity(event, collection, conf);
+  }
+  return loadDatabaseAdapter(conf).all(sql);
+});
+
+const _lazy_Ykf4tv = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '', handler: _pgJzWK, lazy: false, middleware: true, method: undefined },
-  { route: '/api/posts/**:slug', handler: _lazy_fNzN_m, lazy: true, middleware: false, method: "get" },
-  { route: '/api/posts', handler: _lazy_dM7U06, lazy: true, middleware: false, method: "get" },
-  { route: '/__nuxt_error', handler: _lazy_uvnIf9, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _bXhggj, lazy: false, middleware: true, method: undefined },
+  { route: '/__nuxt_error', handler: _lazy_Ykf4tv, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_uvnIf9, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_content/content/sql_dump.txt', handler: _1bZXq_, lazy: false, middleware: false, method: undefined },
+  { route: '/__nuxt_content/info/sql_dump.txt', handler: _1bZXq_, lazy: false, middleware: false, method: undefined },
+  { route: '/__nuxt_content/content/query', handler: _fE_WZI, lazy: false, middleware: false, method: undefined },
+  { route: '/__nuxt_content/info/query', handler: _fE_WZI, lazy: false, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_Ykf4tv, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -2025,82 +2528,6 @@ function useNitroApp() {
 }
 runNitroPlugins(nitroApp$1);
 
-function defineRenderHandler(render) {
-  const runtimeConfig = useRuntimeConfig();
-  return eventHandler(async (event) => {
-    const nitroApp = useNitroApp();
-    const ctx = { event, render, response: void 0 };
-    await nitroApp.hooks.callHook("render:before", ctx);
-    if (!ctx.response) {
-      if (event.path === `${runtimeConfig.app.baseURL}favicon.ico`) {
-        setResponseHeader(event, "Content-Type", "image/x-icon");
-        return send(
-          event,
-          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-        );
-      }
-      ctx.response = await ctx.render(event);
-      if (!ctx.response) {
-        const _currentStatus = getResponseStatus(event);
-        setResponseStatus(event, _currentStatus === 200 ? 500 : _currentStatus);
-        return send(
-          event,
-          "No response returned from render handler: " + event.path
-        );
-      }
-    }
-    await nitroApp.hooks.callHook("render:response", ctx.response, ctx);
-    if (ctx.response.headers) {
-      setResponseHeaders(event, ctx.response.headers);
-    }
-    if (ctx.response.statusCode || ctx.response.statusMessage) {
-      setResponseStatus(
-        event,
-        ctx.response.statusCode,
-        ctx.response.statusMessage
-      );
-    }
-    return ctx.response.body;
-  });
-}
-
-const scheduledTasks = false;
-
-const tasks = {
-  
-};
-
-const __runningTasks__ = {};
-async function runTask(name, {
-  payload = {},
-  context = {}
-} = {}) {
-  if (__runningTasks__[name]) {
-    return __runningTasks__[name];
-  }
-  if (!(name in tasks)) {
-    throw createError({
-      message: `Task \`${name}\` is not available!`,
-      statusCode: 404
-    });
-  }
-  if (!tasks[name].resolve) {
-    throw createError({
-      message: `Task \`${name}\` is not implemented!`,
-      statusCode: 501
-    });
-  }
-  const handler = await tasks[name].resolve();
-  const taskEvent = { name, payload, context };
-  __runningTasks__[name] = handler.run(taskEvent);
-  try {
-    const res = await __runningTasks__[name];
-    return res;
-  } finally {
-    delete __runningTasks__[name];
-  }
-}
-
 if (!globalThis.crypto) {
   globalThis.crypto = nodeCrypto.webcrypto;
 }
@@ -2190,7 +2617,7 @@ async function shutdown() {
 const _messages = { "appName": "Nuxt", "version": "", "statusCode": 500, "statusMessage": "Server error", "description": "This page is temporarily unavailable." };
 const template$1 = (messages) => {
   messages = { ..._messages, ...messages };
-  return '<!DOCTYPE html><html lang="en"><head><title>' + escapeHtml$1(messages.statusCode) + " - " + escapeHtml$1(messages.statusMessage) + " | " + escapeHtml$1(messages.appName) + `</title><meta charset="utf-8"><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0" name="viewport"><style>.spotlight{background:linear-gradient(45deg,#00dc82,#36e4da 50%,#0047e1);filter:blur(20vh)}*,:after,:before{border-color:var(--un-default-border-color,#e5e7eb);border-style:solid;border-width:0;box-sizing:border-box}:after,:before{--un-content:""}html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-moz-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}body{line-height:inherit;margin:0}h1{font-size:inherit;font-weight:inherit}h1,p{margin:0}*,:after,:before{--un-rotate:0;--un-rotate-x:0;--un-rotate-y:0;--un-rotate-z:0;--un-scale-x:1;--un-scale-y:1;--un-scale-z:1;--un-skew-x:0;--un-skew-y:0;--un-translate-x:0;--un-translate-y:0;--un-translate-z:0;--un-pan-x: ;--un-pan-y: ;--un-pinch-zoom: ;--un-scroll-snap-strictness:proximity;--un-ordinal: ;--un-slashed-zero: ;--un-numeric-figure: ;--un-numeric-spacing: ;--un-numeric-fraction: ;--un-border-spacing-x:0;--un-border-spacing-y:0;--un-ring-offset-shadow:0 0 transparent;--un-ring-shadow:0 0 transparent;--un-shadow-inset: ;--un-shadow:0 0 transparent;--un-ring-inset: ;--un-ring-offset-width:0px;--un-ring-offset-color:#fff;--un-ring-width:0px;--un-ring-color:rgba(147,197,253,.5);--un-blur: ;--un-brightness: ;--un-contrast: ;--un-drop-shadow: ;--un-grayscale: ;--un-hue-rotate: ;--un-invert: ;--un-saturate: ;--un-sepia: ;--un-backdrop-blur: ;--un-backdrop-brightness: ;--un-backdrop-contrast: ;--un-backdrop-grayscale: ;--un-backdrop-hue-rotate: ;--un-backdrop-invert: ;--un-backdrop-opacity: ;--un-backdrop-saturate: ;--un-backdrop-sepia: }.fixed{position:fixed}.-bottom-1\\/2{bottom:-50%}.left-0{left:0}.right-0{right:0}.grid{display:grid}.mb-16{margin-bottom:4rem}.mb-8{margin-bottom:2rem}.h-1\\/2{height:50%}.max-w-520px{max-width:520px}.min-h-screen{min-height:100vh}.place-content-center{place-content:center}.overflow-hidden{overflow:hidden}.bg-white{--un-bg-opacity:1;background-color:rgb(255 255 255/var(--un-bg-opacity))}.px-8{padding-left:2rem;padding-right:2rem}.text-center{text-align:center}.text-8xl{font-size:6rem;line-height:1}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-black{--un-text-opacity:1;color:rgb(0 0 0/var(--un-text-opacity))}.font-light{font-weight:300}.font-medium{font-weight:500}.leading-tight{line-height:1.25}.font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}@media(prefers-color-scheme:dark){.dark\\:bg-black{--un-bg-opacity:1;background-color:rgb(0 0 0/var(--un-bg-opacity))}.dark\\:text-white{--un-text-opacity:1;color:rgb(255 255 255/var(--un-text-opacity))}}@media(min-width:640px){.sm\\:px-0{padding-left:0;padding-right:0}.sm\\:text-4xl{font-size:2.25rem;line-height:2.5rem}}</style><script>!function(){const e=document.createElement("link").relList;if(!(e&&e.supports&&e.supports("modulepreload"))){for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver((e=>{for(const o of e)if("childList"===o.type)for(const e of o.addedNodes)"LINK"===e.tagName&&"modulepreload"===e.rel&&r(e)})).observe(document,{childList:!0,subtree:!0})}function r(e){if(e.ep)return;e.ep=!0;const r=function(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),"use-credentials"===e.crossOrigin?r.credentials="include":"anonymous"===e.crossOrigin?r.credentials="omit":r.credentials="same-origin",r}(e);fetch(e.href,r)}}();<\/script></head><body class="antialiased bg-white dark:bg-black dark:text-white font-sans grid min-h-screen overflow-hidden place-content-center text-black"><div class="-bottom-1/2 fixed h-1/2 left-0 right-0 spotlight"></div><div class="max-w-520px text-center"><h1 class="font-medium mb-8 sm:text-10xl text-8xl">` + escapeHtml$1(messages.statusCode) + '</h1><p class="font-light leading-tight mb-16 px-8 sm:px-0 sm:text-4xl text-xl">' + escapeHtml$1(messages.description) + "</p></div></body></html>";
+  return '<!DOCTYPE html><html lang="en"><head><title>' + escapeHtml(messages.statusCode) + " - " + escapeHtml(messages.statusMessage) + " | " + escapeHtml(messages.appName) + `</title><meta charset="utf-8"><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0" name="viewport"><style>.spotlight{background:linear-gradient(45deg,#00dc82,#36e4da 50%,#0047e1);filter:blur(20vh)}*,:after,:before{border-color:var(--un-default-border-color,#e5e7eb);border-style:solid;border-width:0;box-sizing:border-box}:after,:before{--un-content:""}html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-moz-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}body{line-height:inherit;margin:0}h1{font-size:inherit;font-weight:inherit}h1,p{margin:0}*,:after,:before{--un-rotate:0;--un-rotate-x:0;--un-rotate-y:0;--un-rotate-z:0;--un-scale-x:1;--un-scale-y:1;--un-scale-z:1;--un-skew-x:0;--un-skew-y:0;--un-translate-x:0;--un-translate-y:0;--un-translate-z:0;--un-pan-x: ;--un-pan-y: ;--un-pinch-zoom: ;--un-scroll-snap-strictness:proximity;--un-ordinal: ;--un-slashed-zero: ;--un-numeric-figure: ;--un-numeric-spacing: ;--un-numeric-fraction: ;--un-border-spacing-x:0;--un-border-spacing-y:0;--un-ring-offset-shadow:0 0 transparent;--un-ring-shadow:0 0 transparent;--un-shadow-inset: ;--un-shadow:0 0 transparent;--un-ring-inset: ;--un-ring-offset-width:0px;--un-ring-offset-color:#fff;--un-ring-width:0px;--un-ring-color:rgba(147,197,253,.5);--un-blur: ;--un-brightness: ;--un-contrast: ;--un-drop-shadow: ;--un-grayscale: ;--un-hue-rotate: ;--un-invert: ;--un-saturate: ;--un-sepia: ;--un-backdrop-blur: ;--un-backdrop-brightness: ;--un-backdrop-contrast: ;--un-backdrop-grayscale: ;--un-backdrop-hue-rotate: ;--un-backdrop-invert: ;--un-backdrop-opacity: ;--un-backdrop-saturate: ;--un-backdrop-sepia: }.fixed{position:fixed}.-bottom-1\\/2{bottom:-50%}.left-0{left:0}.right-0{right:0}.grid{display:grid}.mb-16{margin-bottom:4rem}.mb-8{margin-bottom:2rem}.h-1\\/2{height:50%}.max-w-520px{max-width:520px}.min-h-screen{min-height:100vh}.place-content-center{place-content:center}.overflow-hidden{overflow:hidden}.bg-white{--un-bg-opacity:1;background-color:rgb(255 255 255/var(--un-bg-opacity))}.px-8{padding-left:2rem;padding-right:2rem}.text-center{text-align:center}.text-8xl{font-size:6rem;line-height:1}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-black{--un-text-opacity:1;color:rgb(0 0 0/var(--un-text-opacity))}.font-light{font-weight:300}.font-medium{font-weight:500}.leading-tight{line-height:1.25}.font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}@media(prefers-color-scheme:dark){.dark\\:bg-black{--un-bg-opacity:1;background-color:rgb(0 0 0/var(--un-bg-opacity))}.dark\\:text-white{--un-text-opacity:1;color:rgb(255 255 255/var(--un-text-opacity))}}@media(min-width:640px){.sm\\:px-0{padding-left:0;padding-right:0}.sm\\:text-4xl{font-size:2.25rem;line-height:2.5rem}}</style><script>!function(){const e=document.createElement("link").relList;if(!(e&&e.supports&&e.supports("modulepreload"))){for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver((e=>{for(const o of e)if("childList"===o.type)for(const e of o.addedNodes)"LINK"===e.tagName&&"modulepreload"===e.rel&&r(e)})).observe(document,{childList:!0,subtree:!0})}function r(e){if(e.ep)return;e.ep=!0;const r=function(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),"use-credentials"===e.crossOrigin?r.credentials="include":"anonymous"===e.crossOrigin?r.credentials="omit":r.credentials="same-origin",r}(e);fetch(e.href,r)}}();<\/script></head><body class="antialiased bg-white dark:bg-black dark:text-white font-sans grid min-h-screen overflow-hidden place-content-center text-black"><div class="-bottom-1/2 fixed h-1/2 left-0 right-0 spotlight"></div><div class="max-w-520px text-center"><h1 class="font-medium mb-8 sm:text-10xl text-8xl">` + escapeHtml(messages.statusCode) + '</h1><p class="font-light leading-tight mb-16 px-8 sm:px-0 sm:text-4xl text-xl">' + escapeHtml(messages.description) + "</p></div></body></html>";
 };
 
 const error500 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -2210,165 +2637,6 @@ const styles = {};
 const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: styles
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const POSTS_DIR = path.resolve("content/posts");
-function loadPosts() {
-  const files = fs.readdirSync(POSTS_DIR, { recursive: true });
-  return files.filter((f) => f.endsWith(".md")).map((file) => {
-    const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
-    const { data, content } = matter(raw);
-    return {
-      // 将 Windows 反斜杠替换为正斜杠，确保 URL 兼容
-      slug: file.replace(/\.md$/, "").replace(/\\/g, "/"),
-      meta: data,
-      body: content
-    };
-  });
-}
-
-let ssrRenderer = null;
-let clientRenderer = null;
-async function getRenderer(mode) {
-  if (mode === "client") {
-    return clientRenderer != null ? clientRenderer : clientRenderer = await createClientRenderer();
-  }
-  return ssrRenderer != null ? ssrRenderer : ssrRenderer = await createSsrRenderer();
-}
-async function createClientRenderer() {
-  const md = MarkdownIt({
-    html: true,
-    // 允许 HTML 标签
-    linkify: true,
-    // 自动识别链接
-    typographer: false
-    // 关闭智能标点，避免干扰 LaTeX 语法
-  });
-  md.use(await shikiPlugin({
-    themes: { light: "github-light", dark: "github-dark" }
-  }));
-  return md;
-}
-async function createSsrRenderer() {
-  const output = (process.env.MATHJAX_OUTPUT || "svg").toLowerCase();
-  const md = MarkdownIt({
-    html: true,
-    linkify: true,
-    typographer: false
-  });
-  const mathjaxOptions = {
-    tex: {
-      inlineMath: [["$", "$"]],
-      // 行内公式分隔符
-      displayMath: [["$$", "$$"]],
-      // 块级公式分隔符
-      tags: "ams"
-      // 公式编号风格
-    }
-  };
-  if (output === "chtml") {
-    mathjaxOptions.chtml = {
-      displayAlign: "center",
-      displayIndent: "0"
-    };
-  } else {
-    mathjaxOptions.svg = {
-      scale: 1,
-      // 1x 基准缩放，避免二次缩放模糊
-      minScale: 1,
-      // 不向下缩放
-      exFactor: 0.5,
-      // ex 尺寸因子（接近默认值）
-      displayAlign: "center",
-      displayIndent: "0",
-      fontCache: "local"
-      // 局部缓存，减少不同尺寸复用导致的失真
-    };
-  }
-  md.use(mathjax3, mathjaxOptions);
-  md.use(await shikiPlugin({
-    themes: { light: "github-light", dark: "github-dark" }
-  }));
-  return md;
-}
-const PLACEHOLDER = {
-  BLOCK: "%%MATH_BLOCK_",
-  INLINE: "%%MATH_INLINE_"
-};
-function protectMath(content) {
-  const formulas = [];
-  let text = content.replace(/\$\$([\s\S]+?)\$\$/g, (match) => {
-    formulas.push(match);
-    return `${PLACEHOLDER.BLOCK}${formulas.length - 1}%%`;
-  });
-  text = text.replace(/\$([^\$\n]+?)\$/g, (match) => {
-    formulas.push(match);
-    return `${PLACEHOLDER.INLINE}${formulas.length - 1}%%`;
-  });
-  return { text, formulas };
-}
-function restoreMath(html, formulas) {
-  html = html.replace(
-    new RegExp(`${PLACEHOLDER.BLOCK}(\\d+)%%`, "g"),
-    (_, idx) => {
-      const formula = formulas[parseInt(idx)];
-      return `<div class="math-tex math-block">${escapeHtml(formula)}</div>`;
-    }
-  );
-  html = html.replace(
-    new RegExp(`${PLACEHOLDER.INLINE}(\\d+)%%`, "g"),
-    (_, idx) => {
-      const formula = formulas[parseInt(idx)];
-      return `<span class="math-tex math-inline">${escapeHtml(formula)}</span>`;
-    }
-  );
-  return html;
-}
-function escapeHtml(str) {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-async function renderMarkdown(content) {
-  const mode = (process.env.MATHJAX_MODE || "ssr").toLowerCase();
-  if (mode === "client") {
-    const { text, formulas } = protectMath(content);
-    const renderer2 = await getRenderer("client");
-    const html = renderer2.render(text);
-    return restoreMath(html, formulas);
-  }
-  const renderer = await getRenderer("ssr");
-  return renderer.render(content);
-}
-
-const ____slug__get = defineEventHandler(async (event) => {
-  const slug = getRouterParam(event, "slug");
-  const post = loadPosts().find((p) => p.slug === slug);
-  if (!post) {
-    throw createError({ statusCode: 404, statusMessage: "Post not found" });
-  }
-  const html = await renderMarkdown(post.body);
-  return {
-    slug: post.slug,
-    meta: post.meta,
-    html
-  };
-});
-
-const ____slug__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: ____slug__get
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const index_get = defineEventHandler(() => {
-  const posts = loadPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-    meta: post.meta
-  }));
-});
-
-const index_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: index_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
 function renderPayloadResponse(ssrContext) {
@@ -2446,7 +2714,7 @@ const renderer = defineRenderHandler(async (event) => {
   if (routeOptions.ssr === false) {
     ssrContext.noSSR = true;
   }
-  const renderer = await getRenderer$1(ssrContext);
+  const renderer = await getRenderer(ssrContext);
   const _rendered = await renderer.renderToString(ssrContext).catch(async (error) => {
     if (ssrContext._renderResponse && error.message === "skipping render") {
       return {};
