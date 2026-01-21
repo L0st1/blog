@@ -1,29 +1,50 @@
 {
   "name": "nuxt3-full-ts-blog",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
     "generate": "nuxi generate",
-    "typecheck": "nuxi typecheck"
+    "typecheck": "nuxi typecheck",
+    "up": "taze major -I",
+    "postinstall": "npx simple-git-hooks"
   },
   "dependencies": {
     "@nuxt/content": "^3.11.0",
     "gray-matter": "^4.0.3",
-    "nuxt": "^3.10.0",
-    "remark-math": "^6.0.0",
+    "katex": "^0.16.27",
+    "nuxt": "^3.20.2",
     "rehype-katex": "^7.0.1",
-    "katex": "^0.16.27"
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^6.7.3",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@types/node": "^25.0.9",
     "better-sqlite3": "^12.6.2",
+    "commitizen": "^4.3.1",
     "cross-env": "^7.0.3",
+    "cz-git": "^1.12.0",
+    "eslint": "^9.39.2",
+    "lint-staged": "^15.5.2",
+    "simple-git-hooks": "^2.13.1",
+    "taze": "^19.9.2",
     "typescript": "^5.9.3",
+    "unocss": "^66.6.0",
     "vue-tsc": "^3.2.2"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": ["better-sqlite3"]
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm commitlint --edit"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }

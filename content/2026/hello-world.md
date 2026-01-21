@@ -11,8 +11,6 @@ This is a **fully TypeScript controlled** Nuxt 3 blog.
 
 <code>let fn</code>
 
-
-
 两个范畴 $\mathbf{C}$ 与 $\mathbf{D}$ 的积范畴定义为 $\mathbf{C} \times \mathbf{D}$，其对象为有序对 $(C,D)$，其中 $C \in \mathrm{Ob}(\mathbf{C})$ 且 $D \in \mathrm{Ob}(\mathbf{D})$。
 其态射定义为：$\mathrm{Hom}_{\mathbf{C}\times\mathbf{D}}\big((C,D),(C',D')\big)=\mathrm{Hom}_{\mathbf{C}}(C,C')\times\mathrm{Hom}_{\mathbf{D}}(D,D')$。
 
@@ -32,5 +30,3 @@ This is a **fully TypeScript controlled** Nuxt 3 blog.
 
 最后，对于两个态射 $m:A\to B$ 与 $m':C\to D$，在积范畴 $\mathbf{C}\times\mathbf{D}$ 中，它们组成的态射为 $(m,m'):(A,C)\to(B,D)$。
 排序规则是逐分量的，即先看 $\mathbf{C}$ 分量 $m$，再看 $\mathbf{D}$ 分量 $m'$。
-
-

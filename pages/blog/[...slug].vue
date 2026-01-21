@@ -7,13 +7,12 @@ type Post = ContentCollectionItem & {
 }
 
 const route = useRoute()
-const slug = Array.isArray(route.params.slug) 
-  ? route.params.slug.join('/') 
+const slug = Array.isArray(route.params.slug)
+  ? route.params.slug.join('/')
   : route.params.slug
 
 const { data: post } = await useAsyncData(`post-${slug}`, () =>
-  queryCollection('content').path(`/${slug}`).first()
-) as { data: Ref<Post | null> }
+  queryCollection('content').path(`/${slug}`).first()) as { data: Ref<Post | null> }
 
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found' })
@@ -35,7 +34,9 @@ if (!post.value) {
     <main class="main-content">
       <article v-if="post" class="prose">
         <h1>{{ post.title }}</h1>
-        <p class="summary">{{ post.description }}</p>
+        <p class="summary">
+          {{ post.description }}
+        </p>
         <!-- Nuxt Content 渲染组件 -->
         <ContentRenderer :value="post" />
       </article>
@@ -133,11 +134,11 @@ if (!post.value) {
   .page-container {
     flex-direction: column;
   }
-  
+
   .sidebar {
     width: 100%;
   }
-  
+
   .sidebar-right {
     order: -1; /* 目录移到上面 */
   }

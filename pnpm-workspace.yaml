@@ -1,2 +1,8 @@
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
 ignoredBuiltDependencies:
+  - better-sqlite3
+onlyBuiltDependencies:
   - better-sqlite3
