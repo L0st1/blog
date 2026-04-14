@@ -14,6 +14,7 @@ type HydrationStrategies = {
 type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }> & T
 
 
+export const Tooltip: typeof import("../components/content/Tooltip.vue").default
 export const ProseA: typeof import("../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseA.vue").default
 export const ProseBlockquote: typeof import("../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseBlockquote.vue").default
 export const ProseCode: typeof import("../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseCode.vue").default
