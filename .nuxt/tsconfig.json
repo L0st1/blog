@@ -23,34 +23,34 @@
         "../node_modules/.pnpm/ofetch@1.5.1/node_modules/ofetch"
       ],
       "@unhead/vue": [
-        "../node_modules/.pnpm/@unhead+vue@2.1.2_vue@3.5.26_typescript@5.9.3_/node_modules/@unhead/vue"
+        "../node_modules/.pnpm/@unhead+vue@2.1.2_vue@3.5.27_typescript@5.9.3_/node_modules/@unhead/vue"
       ],
       "@nuxt/devtools": [
-        "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_d716557a2852652e2d0d445ebac7dda7/node_modules/@nuxt/devtools"
+        "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/@nuxt/devtools"
       ],
       "vue": [
-        "../node_modules/.pnpm/vue@3.5.26_typescript@5.9.3/node_modules/vue"
+        "../node_modules/.pnpm/vue@3.5.27_typescript@5.9.3/node_modules/vue"
       ],
       "@vue/runtime-core": [
-        "../node_modules/.pnpm/@vue+runtime-core@3.5.26/node_modules/@vue/runtime-core"
+        "../node_modules/.pnpm/@vue+runtime-core@3.5.27/node_modules/@vue/runtime-core"
       ],
       "@vue/compiler-sfc": [
-        "../node_modules/.pnpm/@vue+compiler-sfc@3.5.26/node_modules/@vue/compiler-sfc"
+        "../node_modules/.pnpm/@vue+compiler-sfc@3.5.27/node_modules/@vue/compiler-sfc"
       ],
       "vue-router": [
-        "../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.26_typescript@5.9.3_/node_modules/vue-router"
+        "../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.27_typescript@5.9.3_/node_modules/vue-router"
       ],
       "vue-router/auto-routes": [
-        "../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.26_typescript@5.9.3_/node_modules/vue-router/vue-router-auto-routes"
+        "../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.27_typescript@5.9.3_/node_modules/vue-router/vue-router-auto-routes"
       ],
       "unplugin-vue-router/client": [
-        "../node_modules/.pnpm/unplugin-vue-router@0.19.2__fa74afa73bd813720667ab5e9ce6bb60/node_modules/unplugin-vue-router/client"
+        "../node_modules/.pnpm/unplugin-vue-router@0.19.2__fddc4720b20f65f394cc30dfddebfce9/node_modules/unplugin-vue-router/client"
       ],
       "@nuxt/schema": [
         "../node_modules/.pnpm/@nuxt+schema@3.20.2/node_modules/@nuxt/schema"
       ],
       "nuxt": [
-        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_0697036b2e37983879313e15bf731cf5/node_modules/nuxt"
+        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_a14ae36604e9d0438193a4bba8385f37/node_modules/nuxt"
       ],
       "vite/client": [
         "../node_modules/.pnpm/vite@7.3.1_@types+node@25.0_bdf3ec05cc1289cf7feb92c2f375bd9e/node_modules/vite/client"
@@ -107,19 +107,19 @@
         "../public/*"
       ],
       "#app": [
-        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_0697036b2e37983879313e15bf731cf5/node_modules/nuxt/dist/app"
+        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_a14ae36604e9d0438193a4bba8385f37/node_modules/nuxt/dist/app"
       ],
       "#app/*": [
-        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_0697036b2e37983879313e15bf731cf5/node_modules/nuxt/dist/app/*"
+        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_a14ae36604e9d0438193a4bba8385f37/node_modules/nuxt/dist/app/*"
       ],
       "vue-demi": [
-        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_0697036b2e37983879313e15bf731cf5/node_modules/nuxt/dist/app/compat/vue-demi"
+        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_a14ae36604e9d0438193a4bba8385f37/node_modules/nuxt/dist/app/compat/vue-demi"
       ],
       "#vue-router": [
-        "../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.26_typescript@5.9.3_/node_modules/vue-router"
+        "../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.27_typescript@5.9.3_/node_modules/vue-router"
       ],
       "#unhead/composables": [
-        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_0697036b2e37983879313e15bf731cf5/node_modules/nuxt/dist/head/runtime/composables/v3"
+        "../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_a14ae36604e9d0438193a4bba8385f37/node_modules/nuxt/dist/head/runtime/composables/v3"
       ],
       "#imports": [
         "./imports"
@@ -180,8 +180,8 @@
     "./nuxt.d.ts",
     "../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/runtime",
     "../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/dist/runtime",
-    "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_d716557a2852652e2d0d445ebac7dda7/node_modules/runtime",
-    "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_d716557a2852652e2d0d445ebac7dda7/node_modules/dist/runtime",
+    "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/runtime",
+    "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/dist/runtime",
     "../node_modules/.pnpm/@nuxt+telemetry@2.6.6_magicast@0.5.1/node_modules/runtime",
     "../node_modules/.pnpm/@nuxt+telemetry@2.6.6_magicast@0.5.1/node_modules/dist/runtime",
     "../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/runtime",
@@ -193,8 +193,8 @@
     "../.data",
     "../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/runtime/server",
     "../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/dist/runtime/server",
-    "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_d716557a2852652e2d0d445ebac7dda7/node_modules/runtime/server",
-    "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_d716557a2852652e2d0d445ebac7dda7/node_modules/dist/runtime/server",
+    "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/runtime/server",
+    "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxt+telemetry@2.6.6_magicast@0.5.1/node_modules/runtime/server",
     "../node_modules/.pnpm/@nuxt+telemetry@2.6.6_magicast@0.5.1/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/runtime/server",

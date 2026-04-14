@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
@@ -25,7 +26,10 @@ export default defineNuxtConfig({
 
   typescript: {
     strict: true,
-    typeCheck: true,
+    // On Windows with pnpm, Nuxt's dev-time type checker (vite-plugin-checker)
+    // can fail resolving TypeScript lib.*.d.ts files. Prefer running
+    // `nuxi typecheck` / `pnpm run typecheck:watch` instead.
+    typeCheck: process.platform !== 'win32',
   },
 
   routeRules: {

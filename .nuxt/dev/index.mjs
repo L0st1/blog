@@ -3,42 +3,42 @@ import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, getRouterParam, setHeader, getResponseStatus, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatusText } from 'file://E:/project/blog/node_modules/.pnpm/h3@1.15.5/node_modules/h3/dist/index.mjs';
-import { escapeHtml } from 'file://E:/project/blog/node_modules/.pnpm/@vue+shared@3.5.26/node_modules/@vue/shared/dist/shared.cjs.js';
-import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://E:/project/blog/node_modules/.pnpm/vue-bundle-renderer@2.2.0/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file://E:/project/blog/node_modules/.pnpm/ufo@1.6.3/node_modules/ufo/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, getRouterParam, setHeader, getResponseStatus, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatusText } from 'file://F:/pkgs/blogs/node_modules/.pnpm/h3@1.15.5/node_modules/h3/dist/index.mjs';
+import { escapeHtml } from 'file://F:/pkgs/blogs/node_modules/.pnpm/@vue+shared@3.5.27/node_modules/@vue/shared/dist/shared.cjs.js';
+import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://F:/pkgs/blogs/node_modules/.pnpm/vue-bundle-renderer@2.2.0/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file://F:/pkgs/blogs/node_modules/.pnpm/ufo@1.6.3/node_modules/ufo/dist/index.mjs';
 import process$1 from 'node:process';
-import { renderToString } from 'file://E:/project/blog/node_modules/.pnpm/vue@3.5.26_typescript@5.9.3/node_modules/vue/server-renderer/index.mjs';
-import { klona } from 'file://E:/project/blog/node_modules/.pnpm/klona@2.0.6/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file://E:/project/blog/node_modules/.pnpm/defu@6.1.4/node_modules/defu/dist/defu.mjs';
-import destr, { destr as destr$1 } from 'file://E:/project/blog/node_modules/.pnpm/destr@2.0.5/node_modules/destr/dist/index.mjs';
-import { snakeCase } from 'file://E:/project/blog/node_modules/.pnpm/scule@1.3.0/node_modules/scule/dist/index.mjs';
-import { createHead as createHead$1, propsToString, renderSSRHead } from 'file://E:/project/blog/node_modules/.pnpm/unhead@2.1.2/node_modules/unhead/dist/server.mjs';
-import { stringify, uneval } from 'file://E:/project/blog/node_modules/.pnpm/devalue@5.6.2/node_modules/devalue/index.js';
-import { isVNode, toValue, isRef } from 'file://E:/project/blog/node_modules/.pnpm/vue@3.5.26_typescript@5.9.3/node_modules/vue/index.mjs';
-import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingPlugin } from 'file://E:/project/blog/node_modules/.pnpm/unhead@2.1.2/node_modules/unhead/dist/plugins.mjs';
-import { createHooks } from 'file://E:/project/blog/node_modules/.pnpm/hookable@5.5.3/node_modules/hookable/dist/index.mjs';
-import { createFetch, Headers as Headers$1 } from 'file://E:/project/blog/node_modules/.pnpm/ofetch@1.5.1/node_modules/ofetch/dist/node.mjs';
-import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file://E:/project/blog/node_modules/.pnpm/node-mock-http@1.0.4/node_modules/node-mock-http/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file://E:/project/blog/node_modules/.pnpm/unstorage@1.17.4_db0@0.3.4__0ba8e1e42d7904aded0dac519710669d/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file://E:/project/blog/node_modules/.pnpm/unstorage@1.17.4_db0@0.3.4__0ba8e1e42d7904aded0dac519710669d/node_modules/unstorage/drivers/fs.mjs';
-import { digest } from 'file://E:/project/blog/node_modules/.pnpm/ohash@2.0.11/node_modules/ohash/dist/index.mjs';
-import { toRouteMatcher, createRouter } from 'file://E:/project/blog/node_modules/.pnpm/radix3@1.1.2/node_modules/radix3/dist/index.mjs';
+import { renderToString } from 'file://F:/pkgs/blogs/node_modules/.pnpm/vue@3.5.27_typescript@5.9.3/node_modules/vue/server-renderer/index.mjs';
+import { klona } from 'file://F:/pkgs/blogs/node_modules/.pnpm/klona@2.0.6/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file://F:/pkgs/blogs/node_modules/.pnpm/defu@6.1.4/node_modules/defu/dist/defu.mjs';
+import destr, { destr as destr$1 } from 'file://F:/pkgs/blogs/node_modules/.pnpm/destr@2.0.5/node_modules/destr/dist/index.mjs';
+import { snakeCase } from 'file://F:/pkgs/blogs/node_modules/.pnpm/scule@1.3.0/node_modules/scule/dist/index.mjs';
+import { createHead as createHead$1, propsToString, renderSSRHead } from 'file://F:/pkgs/blogs/node_modules/.pnpm/unhead@2.1.2/node_modules/unhead/dist/server.mjs';
+import { stringify, uneval } from 'file://F:/pkgs/blogs/node_modules/.pnpm/devalue@5.6.2/node_modules/devalue/index.js';
+import { isVNode, toValue, isRef } from 'file://F:/pkgs/blogs/node_modules/.pnpm/vue@3.5.27_typescript@5.9.3/node_modules/vue/index.mjs';
+import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingPlugin } from 'file://F:/pkgs/blogs/node_modules/.pnpm/unhead@2.1.2/node_modules/unhead/dist/plugins.mjs';
+import { createHooks } from 'file://F:/pkgs/blogs/node_modules/.pnpm/hookable@5.5.3/node_modules/hookable/dist/index.mjs';
+import { createFetch, Headers as Headers$1 } from 'file://F:/pkgs/blogs/node_modules/.pnpm/ofetch@1.5.1/node_modules/ofetch/dist/node.mjs';
+import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file://F:/pkgs/blogs/node_modules/.pnpm/node-mock-http@1.0.4/node_modules/node-mock-http/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file://F:/pkgs/blogs/node_modules/.pnpm/unstorage@1.17.4_db0@0.3.4__0ba8e1e42d7904aded0dac519710669d/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file://F:/pkgs/blogs/node_modules/.pnpm/unstorage@1.17.4_db0@0.3.4__0ba8e1e42d7904aded0dac519710669d/node_modules/unstorage/drivers/fs.mjs';
+import { digest } from 'file://F:/pkgs/blogs/node_modules/.pnpm/ohash@2.0.11/node_modules/ohash/dist/index.mjs';
+import { toRouteMatcher, createRouter } from 'file://F:/pkgs/blogs/node_modules/.pnpm/radix3@1.1.2/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
-import consola, { consola as consola$1 } from 'file://E:/project/blog/node_modules/.pnpm/consola@3.4.2/node_modules/consola/dist/index.mjs';
-import { ErrorParser } from 'file://E:/project/blog/node_modules/.pnpm/youch-core@0.3.3/node_modules/youch-core/build/index.js';
-import { Youch } from 'file://E:/project/blog/node_modules/.pnpm/youch@4.1.0-beta.13/node_modules/youch/build/index.js';
-import { SourceMapConsumer } from 'file://E:/project/blog/node_modules/.pnpm/source-map@0.7.6/node_modules/source-map/source-map.js';
+import consola, { consola as consola$1 } from 'file://F:/pkgs/blogs/node_modules/.pnpm/consola@3.4.2/node_modules/consola/dist/index.mjs';
+import { ErrorParser } from 'file://F:/pkgs/blogs/node_modules/.pnpm/youch-core@0.3.3/node_modules/youch-core/build/index.js';
+import { Youch } from 'file://F:/pkgs/blogs/node_modules/.pnpm/youch@4.1.0-beta.13/node_modules/youch/build/index.js';
+import { SourceMapConsumer } from 'file://F:/pkgs/blogs/node_modules/.pnpm/source-map@0.7.6/node_modules/source-map/source-map.js';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { getContext } from 'file://E:/project/blog/node_modules/.pnpm/unctx@2.5.0/node_modules/unctx/dist/index.mjs';
-import { captureRawStackTrace, parseRawStackTrace } from 'file://E:/project/blog/node_modules/.pnpm/errx@0.1.0/node_modules/errx/dist/index.js';
+import { getContext } from 'file://F:/pkgs/blogs/node_modules/.pnpm/unctx@2.5.0/node_modules/unctx/dist/index.mjs';
+import { captureRawStackTrace, parseRawStackTrace } from 'file://F:/pkgs/blogs/node_modules/.pnpm/errx@0.1.0/node_modules/errx/dist/index.js';
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname as dirname$1, resolve as resolve$1, isAbsolute } from 'file://E:/project/blog/node_modules/.pnpm/pathe@2.0.3/node_modules/pathe/dist/index.mjs';
-import { walkResolver } from 'file://E:/project/blog/node_modules/.pnpm/unhead@2.1.2/node_modules/unhead/dist/utils.mjs';
-import localAdapter from 'file://E:/project/blog/node_modules/.pnpm/db0@0.3.4_better-sqlite3@12.6.2/node_modules/db0/dist/connectors/better-sqlite3.mjs';
+import { dirname as dirname$1, resolve as resolve$1, isAbsolute } from 'file://F:/pkgs/blogs/node_modules/.pnpm/pathe@2.0.3/node_modules/pathe/dist/index.mjs';
+import { walkResolver } from 'file://F:/pkgs/blogs/node_modules/.pnpm/unhead@2.1.2/node_modules/unhead/dist/utils.mjs';
+import localAdapter from 'file://F:/pkgs/blogs/node_modules/.pnpm/db0@0.3.4_better-sqlite3@12.6.2/node_modules/db0/dist/connectors/better-sqlite3.mjs';
 
-const serverAssets = [{"baseName":"server","dir":"E:/project/blog/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"F:/pkgs/blogs/server/assets"}];
 
 const assets$1 = createStorage();
 
@@ -50,11 +50,11 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets$1);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"E:/project/blog","watchOptions":{"ignored":[null]}}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"E:/project/blog/server","watchOptions":{"ignored":[null]}}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"E:/project/blog/.nuxt"}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"E:/project/blog/.nuxt/cache"}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"E:/project/blog/.data/kv"}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"F:/pkgs/blogs","watchOptions":{"ignored":[null]}}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"F:/pkgs/blogs/server","watchOptions":{"ignored":[null]}}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"F:/pkgs/blogs/.nuxt"}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"F:/pkgs/blogs/.nuxt/cache"}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"F:/pkgs/blogs/.data/kv"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -714,7 +714,7 @@ const _inlineRuntimeConfig = {
     },
     "localDatabase": {
       "type": "sqlite",
-      "filename": "E:/project/blog/.data/content/contents.sqlite"
+      "filename": "F:/pkgs/blogs/.data/content/contents.sqlite"
     },
     "integrityCheck": true
   }
@@ -1421,13 +1421,13 @@ if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
 window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 `;
 
-const _dlMBkuxOGRjwqitDfdBC5pHnJRZkVMZIWbplhnnRGTw = (function(nitro) {
+const _faW3hRGbmeGxqxJv_76P2spMHnUgzfXwhWSD5A_cY = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
 });
 
-const rootDir = "E:/project/blog";
+const rootDir = "F:/pkgs/blogs";
 
 const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
 
@@ -1446,7 +1446,7 @@ const devReducers = {
   URL: (data) => data instanceof URL ? data.toString() : void 0
 };
 const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
-const _PJGEjmj5WnwAsEQYSVi1hmIhusJplvCIGEIMbJJ_M_k = (nitroApp) => {
+const _N7w8PQ57MIh1KN3iND4ey1cRMZIlhs5szU7ISlWqpek = (nitroApp) => {
   const handler = nitroApp.h3App.handler;
   nitroApp.h3App.handler = (event) => {
     return asyncContext.callAsync({ logs: [], event }, () => handler(event));
@@ -1516,26 +1516,11 @@ function onConsoleLog(callback) {
 }
 
 const plugins = [
-  _dlMBkuxOGRjwqitDfdBC5pHnJRZkVMZIWbplhnnRGTw,
-_PJGEjmj5WnwAsEQYSVi1hmIhusJplvCIGEIMbJJ_M_k
+  _faW3hRGbmeGxqxJv_76P2spMHnUgzfXwhWSD5A_cY,
+_N7w8PQ57MIh1KN3iND4ey1cRMZIlhs5szU7ISlWqpek
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"182fa-zXIEkgKpMd8rC3W7qzZBu7cfsUk\"",
-    "mtime": "2026-01-21T10:45:47.127Z",
-    "size": 99066,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"5ee0f-2PHZh7QJcPlyMw08t5YEoBGFMyA\"",
-    "mtime": "2026-01-21T10:45:47.127Z",
-    "size": 388623,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -1560,7 +1545,7 @@ function getAsset (id) {
 
 const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
 const EncodingMap = { gzip: ".gz", br: ".br" };
-const _bXhggj = eventHandler((event) => {
+const _VDDsau = eventHandler((event) => {
   if (event.method && !METHODS.has(event.method)) {
     return;
   }
@@ -1698,8 +1683,8 @@ function publicAssetsURL(...path) {
 
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
-const getServerEntry = () => import('file://E:/project/blog/.nuxt//dist/server/server.mjs').then((r) => r.default || r);
-const getClientManifest = () => import('file://E:/project/blog/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getServerEntry = () => import('file://F:/pkgs/blogs/.nuxt//dist/server/server.mjs').then((r) => r.default || r);
+const getClientManifest = () => import('file://F:/pkgs/blogs/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getSSRRenderer = lazyCachedFunction(async () => {
   const createSSRApp = await getServerEntry();
   if (!createSSRApp) {
@@ -1945,7 +1930,7 @@ async function getIslandContext(event) {
   return ctx;
 }
 
-const _1bZXq_ = eventHandler(async (event) => {
+const _C0bJkK = eventHandler(async (event) => {
   const collection = getRouterParam(event, "collection") || event.path?.split("/")?.[2] || "";
   setHeader(event, "Content-Type", "text/plain");
   const data = await useStorage().getItem(`build:content:database.compressed.mjs`) || "";
@@ -1956,7 +1941,7 @@ const _1bZXq_ = eventHandler(async (event) => {
       return content.substring(lineStart.length, content.length - 1);
     }
   }
-  return await import('file://E:/project/blog/.nuxt/content/database.compressed.mjs').then((m) => m[collection]);
+  return await import('file://F:/pkgs/blogs/.nuxt/content/database.compressed.mjs').then((m) => m[collection]);
 });
 
 async function decompressSQLDump(base64Str, compressionType = "gzip") {
@@ -1976,7 +1961,7 @@ async function decompressSQLDump(base64Str, compressionType = "gzip") {
 }
 
 const checksums = {
-  "content": "v3.5.0--pQxLk8eeqGiZwFD9gq6k1NeVymUUdY8FfTYKxjqI1qk"
+  "content": "v3.5.0--LFc-Zz2zqQokEsU3VxUm63bwMNSrbGJSze2gwJoefG8"
 };
 const checksumsStructure = {
   "content": "pHKxGl0GlLYVO_vq55OSHsBwxh33kIPKr_LMDTF-0d0"
@@ -2378,7 +2363,7 @@ async function runTask(name, {
   }
 }
 
-const _fE_WZI = eventHandler(async (event) => {
+const _qHFpDE = eventHandler(async (event) => {
   const { sql } = await readBody(event);
   const collection = getRouterParam(event, "collection") || event.path?.split("/")?.[2] || "";
   assertSafeQuery(sql, collection);
@@ -2389,17 +2374,17 @@ const _fE_WZI = eventHandler(async (event) => {
   return loadDatabaseAdapter(conf).all(sql);
 });
 
-const _lazy_Ykf4tv = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_OE56sJ = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '', handler: _bXhggj, lazy: false, middleware: true, method: undefined },
-  { route: '/__nuxt_error', handler: _lazy_Ykf4tv, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _VDDsau, lazy: false, middleware: true, method: undefined },
+  { route: '/__nuxt_error', handler: _lazy_OE56sJ, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
-  { route: '/__nuxt_content/content/sql_dump.txt', handler: _1bZXq_, lazy: false, middleware: false, method: undefined },
-  { route: '/__nuxt_content/info/sql_dump.txt', handler: _1bZXq_, lazy: false, middleware: false, method: undefined },
-  { route: '/__nuxt_content/content/query', handler: _fE_WZI, lazy: false, middleware: false, method: undefined },
-  { route: '/__nuxt_content/info/query', handler: _fE_WZI, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_Ykf4tv, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_content/content/sql_dump.txt', handler: _C0bJkK, lazy: false, middleware: false, method: undefined },
+  { route: '/__nuxt_content/info/sql_dump.txt', handler: _C0bJkK, lazy: false, middleware: false, method: undefined },
+  { route: '/__nuxt_content/content/query', handler: _qHFpDE, lazy: false, middleware: false, method: undefined },
+  { route: '/__nuxt_content/info/query', handler: _qHFpDE, lazy: false, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_OE56sJ, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
