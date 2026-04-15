@@ -31,7 +31,6 @@ export { setInterval } from '#app/compat/interval';
 export { definePageMeta } from '../node_modules/.pnpm/nuxt@3.20.2_@parcel+watcher_a14ae36604e9d0438193a4bba8385f37/node_modules/nuxt/dist/pages/runtime/composables';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { queryCollection, queryCollectionSearchSections, queryCollectionNavigation, queryCollectionItemSurroundings } from '../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/@nuxt/content/dist/runtime/client';
-export { useNuxtDevTools } from '../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { flatUnwrap as unwrapSlot } from '../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/@nuxtjs/mdc/dist/runtime/utils/node';
 export { parseMarkdown } from '../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/@nuxtjs/mdc/dist/runtime/parser';
 export { stringifyMarkdown } from '../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/@nuxtjs/mdc/dist/runtime/stringify';

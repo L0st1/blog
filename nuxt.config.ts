@@ -4,7 +4,11 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   compatibilityDate: '2026-01-16',
 
-  modules: ['@nuxt/content'],
+  modules: [
+    '@nuxt/content',
+    '@vercel/analytics',
+    '@vercel/speed-insights',
+  ],
 
   // 全局引入 KaTeX 样式（用于 rehype-katex 的静态输出）
   css: ['katex/dist/katex.min.css'],

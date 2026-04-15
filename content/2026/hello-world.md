@@ -11,8 +11,6 @@ This is a **fully TypeScript controlled** Nuxt 3 blog.
 
 这里有一个术语提示示例：<Tooltip text="范畴论里的基本构造：给定 A、B，积 A×B 满足一个泛性质。" tone="info">积 (product)</Tooltip>。
 
-<code>let fn</code>
-
 两个范畴 $\mathbf{C}$ 与 $\mathbf{D}$ 的积范畴定义为 $\mathbf{C} \times \mathbf{D}$，其对象为有序对 $(C,D)$，其中 $C \in \mathrm{Ob}(\mathbf{C})$ 且 $D \in \mathrm{Ob}(\mathbf{D})$。
 其态射定义为：$\mathrm{Hom}_{\mathbf{C}\times\mathbf{D}}\big((C,D),(C',D')\big)=\mathrm{Hom}_{\mathbf{C}}(C,C')\times\mathrm{Hom}_{\mathbf{D}}(D,D')$。
 

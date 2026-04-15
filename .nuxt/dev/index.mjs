@@ -1520,7 +1520,22 @@ const plugins = [
 _N7w8PQ57MIh1KN3iND4ey1cRMZIlhs5szU7ISlWqpek
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"183bd-QgNmns/GuV2AHJoxTCBCfykwHrQ\"",
+    "mtime": "2026-04-15T02:56:03.631Z",
+    "size": 99261,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"5ec38-xDTtdzShEKF+dcnWiz0Be/khKFs\"",
+    "mtime": "2026-04-15T02:56:03.632Z",
+    "size": 388152,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -1960,12 +1975,8 @@ async function decompressSQLDump(base64Str, compressionType = "gzip") {
   return JSON.parse(text);
 }
 
-const checksums = {
-  "content": "v3.5.0--LFc-Zz2zqQokEsU3VxUm63bwMNSrbGJSze2gwJoefG8"
-};
-const checksumsStructure = {
-  "content": "pHKxGl0GlLYVO_vq55OSHsBwxh33kIPKr_LMDTF-0d0"
-};
+const checksums = {};
+const checksumsStructure = {};
 const tables = {
   "content": "_content_content",
   "info": "_content_info"

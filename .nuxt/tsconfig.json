@@ -134,7 +134,7 @@
         "./mdc-imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev"
+        "./manifest/meta/91d1cead-256a-4076-a4b0-6e1c75f17231.json"
       ],
       "#components": [
         "./components"
@@ -180,6 +180,10 @@
     "./nuxt.d.ts",
     "../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/runtime",
     "../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/dist/runtime",
+    "../node_modules/.pnpm/@vercel+analytics@2.0.1_nux_ba33c2400d0a8f076392fe08470bb725/node_modules/runtime",
+    "../node_modules/.pnpm/@vercel+analytics@2.0.1_nux_ba33c2400d0a8f076392fe08470bb725/node_modules/dist/runtime",
+    "../node_modules/.pnpm/@vercel+speed-insights@2.0._cbc1ba98c32cfa82e604af18f8fec21b/node_modules/runtime",
+    "../node_modules/.pnpm/@vercel+speed-insights@2.0._cbc1ba98c32cfa82e604af18f8fec21b/node_modules/dist/runtime",
     "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/runtime",
     "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/dist/runtime",
     "../node_modules/.pnpm/@nuxt+telemetry@2.6.6_magicast@0.5.1/node_modules/runtime",
@@ -193,12 +197,16 @@
     "../.data",
     "../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/runtime/server",
     "../node_modules/.pnpm/@nuxt+content@3.11.0_better-sqlite3@12.6.2_magicast@0.5.1/node_modules/dist/runtime/server",
+    "../node_modules/.pnpm/@vercel+analytics@2.0.1_nux_ba33c2400d0a8f076392fe08470bb725/node_modules/runtime/server",
+    "../node_modules/.pnpm/@vercel+analytics@2.0.1_nux_ba33c2400d0a8f076392fe08470bb725/node_modules/dist/runtime/server",
+    "../node_modules/.pnpm/@vercel+speed-insights@2.0._cbc1ba98c32cfa82e604af18f8fec21b/node_modules/runtime/server",
+    "../node_modules/.pnpm/@vercel+speed-insights@2.0._cbc1ba98c32cfa82e604af18f8fec21b/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/runtime/server",
     "../node_modules/.pnpm/@nuxt+devtools@3.1.1_vite@7_f5988ae4736db9a563028ce1929f6bc1/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxt+telemetry@2.6.6_magicast@0.5.1/node_modules/runtime/server",
     "../node_modules/.pnpm/@nuxt+telemetry@2.6.6_magicast@0.5.1/node_modules/dist/runtime/server",
     "../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/runtime/server",
     "../node_modules/.pnpm/@nuxtjs+mdc@0.20.0_magicast@0.5.1/node_modules/dist/runtime/server",
-    "dev"
+    "../.output"
   ]
 }
