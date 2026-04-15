@@ -22,10 +22,17 @@ if (!post.value) {
 </script>
 
 <template>
-  <div class="page-container">
+  <div class="page-container text-zinc-900 dark:text-zinc-100">
     <!-- 左侧边栏 -->
-    <aside class="sidebar sidebar-left">
-      <div class="sidebar-content">
+    <aside class="sidebar sidebar-left pr-4">
+      <NuxtLink v-slot="{ navigate }" to="/" custom>
+        <InspiraInteractiveHoverButton
+          text="返回首页"
+          class="w-full max-w-full"
+          @click="navigate"
+        />
+      </NuxtLink>
+      <div class="sidebar-content mt-4">
         <h3>文章信息</h3>
         <p>发布日期: {{ post?.date }}</p>
         <p>标签: {{ post?.tags?.join(', ') }}</p>
@@ -36,7 +43,7 @@ if (!post.value) {
     <main class="main-content">
       <article v-if="post" class="prose">
         <h1>{{ post.title }}</h1>
-        <p class="summary">
+        <p class="summary text-zinc-600 dark:text-zinc-400">
           {{ post.description }}
         </p>
         <!-- Nuxt Content 渲染组件 -->
@@ -45,7 +52,7 @@ if (!post.value) {
     </main>
 
     <!-- 右侧边栏 -->
-    <aside class="sidebar sidebar-right">
+    <aside class="sidebar sidebar-right pl-4">
       <div class="sidebar-content">
         <h3>目录</h3>
         <nav class="toc">
@@ -79,25 +86,39 @@ if (!post.value) {
   position: sticky;
   top: 2rem;
   padding: 1rem;
-  background: #f9f9f9;
   border-radius: 8px;
+  background: rgb(244 244 245 / 0.8);
+  border: 1px solid rgb(228 228 231);
+}
+
+.dark .sidebar-content {
+  background: rgb(24 24 27 / 0.5);
+  border-color: rgb(63 63 70);
 }
 
 .sidebar h3 {
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1rem;
-  color: #333;
+  color: inherit;
 }
 
 /* 左侧边栏 */
 .sidebar-left {
-  border-right: 1px solid #eee;
+  border-right: 1px solid rgb(228 228 231);
+}
+
+.dark .sidebar-left {
+  border-right-color: rgb(63 63 70);
 }
 
 /* 右侧边栏 */
 .sidebar-right {
-  border-left: 1px solid #eee;
+  border-left: 1px solid rgb(228 228 231);
+}
+
+.dark .sidebar-right {
+  border-left-color: rgb(63 63 70);
 }
 
 /* 中间主内容区 */
@@ -112,7 +133,6 @@ if (!post.value) {
 }
 
 .summary {
-  color: #666;
   font-style: italic;
 }
 
@@ -123,6 +143,18 @@ if (!post.value) {
 /* 目录样式 */
 .toc {
   font-size: 0.9rem;
+}
+
+.toc a {
+  color: rgb(37 99 235);
+}
+
+.dark .toc a {
+  color: rgb(96 165 250);
+}
+
+.toc a:hover {
+  text-decoration: underline;
 }
 
 /* 响应式布局 */
