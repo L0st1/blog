@@ -8,11 +8,22 @@ export default defineNuxtConfig({
     appManifest: false,
   },
 
+  css: ['@unocss/reset/tailwind.css', '~/assets/css/main.css'],
+
   modules: [
+    '@nuxtjs/color-mode',
+    '@unocss/nuxt',
+    'motion-v/nuxt',
     '@nuxt/content',
     '@vercel/analytics',
     '@vercel/speed-insights',
   ],
+
+  colorMode: {
+    classSuffix: '',
+    preference: 'system',
+    fallback: 'light',
+  },
 
   content: {
     build: {
@@ -24,6 +35,13 @@ export default defineNuxtConfig({
         // 使用 KaTeX 在构建期静态渲染
         rehypePlugins: {
           'rehype-katex': {},
+        },
+        // Shiki 与 @nuxtjs/color-mode 联动：亮/暗各一套主题
+        highlight: {
+          theme: {
+            default: 'github-light',
+            dark: 'github-dark',
+          },
         },
       },
     },
