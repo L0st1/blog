@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ContentCollectionItem } from '@nuxt/content'
 
+import 'katex/dist/katex.min.css'
+
 type Post = ContentCollectionItem & {
   date?: string
   tags?: string[]

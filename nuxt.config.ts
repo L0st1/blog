@@ -4,14 +4,15 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   compatibilityDate: '2026-01-16',
 
+  experimental: {
+    appManifest: false,
+  },
+
   modules: [
     '@nuxt/content',
     '@vercel/analytics',
     '@vercel/speed-insights',
   ],
-
-  // 全局引入 KaTeX 样式（用于 rehype-katex 的静态输出）
-  css: ['katex/dist/katex.min.css'],
 
   content: {
     build: {
@@ -28,6 +29,14 @@ export default defineNuxtConfig({
     },
   },
 
+  nitro: {
+    // 为 / 启用预渲染
+    prerender: {
+      routes: ['/'],
+      crawlLinks: true,
+    },
+  },
+
   typescript: {
     strict: true,
     // On Windows with pnpm, Nuxt's dev-time type checker (vite-plugin-checker)
@@ -37,6 +46,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    '/': { prerender: true },
     '/blog/**': { prerender: true, swr: false },
   },
 })
