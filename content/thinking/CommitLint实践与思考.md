@@ -1,5 +1,6 @@
 ---
 title: CommitLint实践与思考
+path: thinking/commitlint-practice
 date: 2025-05-22
 tags: [git]
 description: 完备的Git CommitLint实践以及为什么这么做

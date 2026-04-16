@@ -1,5 +1,6 @@
 ---
 title: Hello Nuxt Blog
+path: life/hello-world
 date: 2026-01-01
 tags: [nuxt, blog]
 description: My first fully controlled Nuxt blog

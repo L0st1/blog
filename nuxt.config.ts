@@ -1,4 +1,5 @@
 import process from 'node:process'
+import matter from 'gray-matter'
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
@@ -71,5 +72,22 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/blog/**': { prerender: true, swr: false },
+  },
+
+  /**
+   * 路由以 frontmatter 的 `path`（连字符 slug）为准；path-meta 仍会按文件名 slugify，此处用 gray-matter 覆盖。
+   */
+  hooks: {
+    'content:file:afterParse': (ctx) => {
+      const body = ctx.file.body
+      if (typeof body !== 'string') {
+        return
+      }
+      const routePath = matter(body).data.path
+      if (typeof routePath === 'string' && routePath.length > 0) {
+        const content = ctx.content as unknown as { path: string }
+        content.path = `/${routePath.replace(/^\/+/, '')}`
+      }
+    },
   },
 })

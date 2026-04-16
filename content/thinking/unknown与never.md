@@ -1,5 +1,6 @@
 ---
 title: unknown与never的区别
+path: thinking/typescript-unknown-and-never
 date: 2026-04-16
 tags: [TypeScript]
 description: 既生never，何生unknown

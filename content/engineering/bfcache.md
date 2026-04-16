@@ -1,5 +1,6 @@
 ---
 title: bfcache可能导致新部署的代码不生效
+path: engineering/bfcache
 date: 2026-01-14
 tags: [bfcache]
 description: 前端应用成功发布新版本后，bfcache有可能导致新代码不生效
