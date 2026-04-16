@@ -28,6 +28,11 @@ export default defineNuxtConfig({
   content: {
     build: {
       markdown: {
+        // 默认 depth: 2 约到 h3；含四级标题时需放开，且需能扫到嵌套在块内的标题
+        toc: {
+          depth: 4,
+          searchDepth: 4,
+        },
         // 数学语法解析
         remarkPlugins: {
           'remark-math': {},

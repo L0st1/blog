@@ -19,12 +19,44 @@ const { data: post } = await useAsyncData(`post-${slug}`, () =>
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found' })
 }
+
+/** Nuxt Content 的 toc.links 为树；depth 用于缩进展示 h2→h4（无 h3 时 h4 会挂在上一级下） */
+interface TocLink {
+  id: string
+  text: string
+  children?: TocLink[]
+}
+
+function flattenTocLinks(links: TocLink[] | undefined, depth = 0): { id: string, text: string, depth: number }[] {
+  if (!links?.length) {
+    return []
+  }
+  const out: { id: string, text: string, depth: number }[] = []
+  for (const link of links) {
+    out.push({ id: link.id, text: link.text, depth })
+    if (link.children?.length) {
+      out.push(...flattenTocLinks(link.children, depth + 1))
+    }
+  }
+  return out
+}
+
+const tocRows = computed(() =>
+  flattenTocLinks(post.value?.body?.toc?.links as TocLink[] | undefined),
+)
 </script>
 
 <template>
+  <!-- 窄屏侧栏隐藏时：与 app.vue 中 ColorModeToggle（fixed right-4 w-10）并排 -->
+  <NuxtLink
+    to="/"
+    class="fixed top-4 right-[calc(1rem+2.5rem+0.5rem)] z-50 hidden h-10 max-w-[min(11rem,calc(100vw-6rem))] items-center justify-center truncate rounded-full border border-zinc-200 bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-sm backdrop-blur-md transition-colors hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900/90 dark:text-zinc-100 dark:hover:bg-zinc-800 max-[1200px]:inline-flex"
+  >
+    返回首页
+  </NuxtLink>
   <div class="page-container text-zinc-900 dark:text-zinc-100">
     <!-- 左侧边栏 -->
-    <aside class="sidebar sidebar-left pr-4">
+    <aside class="sidebar sidebar-left self-start sticky top-8 pr-4">
       <NuxtLink v-slot="{ navigate }" to="/" custom>
         <InspiraInteractiveHoverButton
           text="返回首页"
@@ -42,23 +74,28 @@ if (!post.value) {
     <!-- 中间主内容区域 -->
     <main class="main-content">
       <article v-if="post" class="prose">
-        <h1>{{ post.title }}</h1>
+        <!-- <h1>{{ post.title }}</h1>
         <p class="summary text-zinc-600 dark:text-zinc-400">
           {{ post.description }}
-        </p>
+        </p> -->
         <!-- Nuxt Content 渲染组件 -->
         <ContentRenderer :value="post" />
       </article>
     </main>
 
     <!-- 右侧边栏 -->
-    <aside class="sidebar sidebar-right pl-4">
+    <aside class="sidebar sidebar-right self-start sticky top-16 pl-4">
       <div class="sidebar-content">
-        <h3>目录</h3>
+        <h3>快速定位</h3>
         <nav class="toc">
-          <ul v-if="post?.body?.toc?.links">
-            <li v-for="link in post.body.toc.links" :key="link.id">
-              <a :href="`#${link.id}`">{{ link.text }}</a>
+          <ul v-if="tocRows.length" class="toc-list">
+            <li
+              v-for="row in tocRows"
+              :key="row.id"
+              class="toc-row"
+              :style="{ paddingLeft: `calc(${row.depth} * 0.65rem)` }"
+            >
+              <a :href="`#${row.id}`">{{ row.text }}</a>
             </li>
           </ul>
         </nav>
@@ -83,8 +120,6 @@ if (!post.value) {
 }
 
 .sidebar-content {
-  position: sticky;
-  top: 2rem;
   padding: 1rem;
   border-radius: 8px;
   background: rgb(244 244 245 / 0.8);
@@ -145,6 +180,16 @@ if (!post.value) {
   font-size: 0.9rem;
 }
 
+.toc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.toc-row {
+  margin: 0.2rem 0;
+}
+
 .toc a {
   color: rgb(37 99 235);
 }
@@ -174,7 +219,7 @@ if (!post.value) {
   }
 
   .sidebar-right {
-    order: -1; /* 目录移到上面 */
+    display: none;
   }
 }
 </style>
