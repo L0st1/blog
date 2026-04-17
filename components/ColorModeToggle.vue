@@ -9,7 +9,7 @@ function toggle() {
 <template>
   <button
     type="button"
-    class="fixed top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-white/90 text-zinc-800 shadow-sm backdrop-blur-md transition-colors hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900/90 dark:text-zinc-100 dark:hover:bg-zinc-800"
+    class="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-white/90 text-zinc-800 shadow-sm backdrop-blur-md transition-colors hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900/90 dark:text-zinc-100 dark:hover:bg-zinc-800"
     :aria-pressed="colorMode.value === 'dark'"
     :aria-label="colorMode.value === 'dark' ? '切换到亮色模式' : '切换到暗色模式'"
     @click="toggle"

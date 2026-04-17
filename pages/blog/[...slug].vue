@@ -47,10 +47,10 @@ const tocRows = computed(() =>
 </script>
 
 <template>
-  <!-- 窄屏侧栏隐藏时：与 app.vue 中 ColorModeToggle（fixed right-4 w-10）并排 -->
+  <!-- 窄屏侧栏隐藏时：与 app.vue 中主题切换 + GitHub（fixed right-4，两枚 w-10 + gap-2）左侧对齐 -->
   <NuxtLink
     to="/"
-    class="fixed top-4 right-[calc(1rem+2.5rem+0.5rem)] z-50 hidden h-10 max-w-[min(11rem,calc(100vw-6rem))] items-center justify-center truncate rounded-full border border-zinc-200 bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-sm backdrop-blur-md transition-colors hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900/90 dark:text-zinc-100 dark:hover:bg-zinc-800 max-[1200px]:inline-flex"
+    class="fixed top-4 right-[calc(1rem+2.5rem+0.5rem+2.5rem+0.5rem)] z-50 hidden h-10 max-w-[min(11rem,calc(100vw-9rem))] items-center justify-center truncate rounded-full border border-zinc-200 bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-sm backdrop-blur-md transition-colors hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900/90 dark:text-zinc-100 dark:hover:bg-zinc-800 max-[1200px]:inline-flex"
   >
     返回首页
   </NuxtLink>
