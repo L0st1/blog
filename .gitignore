@@ -6,6 +6,9 @@ node_modules
 .output
 dist
 
+# Nuxt Content 本地 SQLite 索引（由 content 在 dev/build 时生成）
+.data/
+
 # 其他
 *.log
 .DS_Store
