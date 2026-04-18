@@ -66,7 +66,7 @@ const tocRows = computed(() =>
       </NuxtLink>
       <div class="sidebar-content mt-4">
         <h3>文章信息</h3>
-        <p>发布日期: {{ post?.date }}</p>
+        <p>撰写日期: {{ post?.date }}</p>
         <p>标签: {{ post?.tags?.join(', ') }}</p>
       </div>
     </aside>
