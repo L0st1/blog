@@ -150,7 +150,7 @@ onBeforeUnmount(() => {
   border: 0;
 }
 
-/* 键盘用户：可见的「揭示」入口，避免无法悬停的设备完全不可用 */
+/* 键盘用户：可见的“揭示”入口，避免无法悬停的设备完全不可用 */
 .spoiler__a11y:focus,
 .spoiler__a11y:focus-visible {
   position: static;
