@@ -5,7 +5,8 @@
 # 2. GitHub → Settings → Secrets and variables → Actions → Repository secrets：
 #    - GITEE_TOKEN：Gitee 私人令牌（需具备该仓库 push 权限；创建时勾选 projects）。
 #    - GITEE_REPO：仅填 owner/repo（如 rur011/blog-pages）。勿填完整 URL、勿带 .git、勿首尾空格。
-#    - GITEE_GIT_USER（可选）：HTTPS 用户名，默认 oauth2；若仍 404 可改为你的 Gitee 登录名再试。
+#    - GITEE_GIT_USER（可选）：HTTPS 用户名。Gitee 常报「token username invalid」时不要用 oauth2，应填 Gitee 登录名。
+#      未设置时默认用 GITEE_REPO 的 owner（如 rur011/blog-pages → rur011）。组织仓库若令牌属个人，请显式填登录名。
 # 3. GitHub → Settings → Secrets and variables → Actions → Repository variables（可选）：
 #    - NUXT_APP_BASE_URL：仅「项目 Pages」子路径（如 https://user.gitee.io/repo/）时设为 /repo/；用户/组织主页留空或 /。
 #    - GITEE_PAGES_BRANCH：推送的静态分支名，默认 pages。
@@ -69,7 +70,8 @@ jobs:
             exit 1
           fi
 
-          GIT_USER="${GITEE_GIT_USER:-oauth2}"
+          REPO_OWNER="${REPO%%/*}"
+          GIT_USER="${GITEE_GIT_USER:-${REPO_OWNER}}"
           # 令牌若含 @、:、% 等，拼进 https://user:pass@host 会被误解析（曾出现 host 变成 owner、DNS 报 rur011）。
           # 先启用 store，再用 git credential approve 写入凭据，最后用无账号信息的 URL 推送。
           git config --global credential.helper store
