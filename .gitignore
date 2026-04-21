@@ -12,3 +12,6 @@ dist
 # 其他
 *.log
 .DS_Store
+
+# 写作中
+content/writing/**
