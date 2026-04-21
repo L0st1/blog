@@ -2,8 +2,22 @@ import process from 'node:process'
 import matter from 'gray-matter'
 import { defineNuxtConfig } from 'nuxt/config'
 
+/** Gitee 项目 Pages（子路径）时在 CI 中设置，例如 `/repo-name/`；Vercel 勿设置，保持根路径。 */
+function appBaseURL(): string {
+  const raw = process.env.NUXT_APP_BASE_URL?.trim()
+  if (!raw || raw === '/') {
+    return '/'
+  }
+  const withLeading = raw.startsWith('/') ? raw : `/${raw}`
+  return withLeading.endsWith('/') ? withLeading : `${withLeading}/`
+}
+
 export default defineNuxtConfig({
   compatibilityDate: '2026-01-16',
+
+  app: {
+    baseURL: appBaseURL(),
+  },
 
   experimental: {
     appManifest: false,

@@ -1,0 +1,63 @@
+# 将静态站点同步到 Gitee Pages（与 Vercel 并行；Vercel 仍由仓库连接自动部署）。
+#
+# 一次性配置：
+# 1. Gitee：新建仓库；服务 → Gitee Pages → 选择分支（与下方 GITEE_PAGES_BRANCH 一致，默认 pages）与目录 `/`；完成实名认证。
+# 2. GitHub → Settings → Secrets and variables → Actions → Repository secrets：
+#    - GITEE_TOKEN：Gitee 私人令牌（需具备该仓库 push 权限）。
+#    - GITEE_REPO：Gitee 仓库路径，格式 owner/repo。
+# 3. GitHub → Settings → Secrets and variables → Actions → Repository variables（可选）：
+#    - NUXT_APP_BASE_URL：仅「项目 Pages」子路径（如 https://user.gitee.io/repo/）时设为 /repo/；用户/组织主页留空或 /。
+#    - GITEE_PAGES_BRANCH：推送的静态分支名，默认 pages。
+# 4. 首次启用 Gitee Pages 后若未自动更新，在 Gitee 网页点一次「更新」。
+
+name: Deploy Gitee Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+concurrency:
+  group: gitee-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate static site
+        env:
+          NUXT_APP_BASE_URL: ${{ vars.NUXT_APP_BASE_URL || '/' }}
+        run: pnpm run generate
+
+      - name: Push static files to Gitee
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+          GITEE_REPO: ${{ secrets.GITEE_REPO }}
+          GITEE_PAGES_BRANCH: ${{ vars.GITEE_PAGES_BRANCH || 'pages' }}
+        run: |
+          set -e
+          test -n "${GITEE_TOKEN}" || (echo 'Missing secret GITEE_TOKEN' && exit 1)
+          test -n "${GITEE_REPO}" || (echo 'Missing secret GITEE_REPO' && exit 1)
+          cd .output/public
+          git init
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add -A
+          git commit -m "chore: deploy ${{ github.sha }}"
+          git branch -M "${GITEE_PAGES_BRANCH}"
+          git push -f "https://oauth2:${GITEE_TOKEN}@gitee.com/${GITEE_REPO}.git" "${GITEE_PAGES_BRANCH}"
