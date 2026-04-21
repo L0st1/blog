@@ -99,32 +99,44 @@ jobs:
 
           test -n "${GITEE_TOKEN}" || (echo 'Missing GITEE_TOKEN (or set GITEE_SSH_PRIVATE_KEY for SSH).' && exit 1)
 
-          # HTTPS：用户名=登录名或邮箱，密码=私人令牌；path 与 useHttpPath 便于与 push URL 匹配。
-          git config --global credential.helper store
-          git config --global credential.useHttpPath true
-          export GIT_USER
+          # HTTPS：用「整段 URL + urllib 编码」推送，避免 (1) 邮箱用户名里的 @ 破坏 user:pass@host 解析
+          # (2) credential helper 与 Gitee 校验不一致。依次尝试 oauth2（官方常见）再试登录名/邮箱。
+          git config --global --unset-all credential.helper || true
           export GITEE_REPO_PATH="${REPO}"
+          export GITEE_GIT_LOGIN="${GIT_USER}"
           python3 << 'PY'
           import os
           import subprocess
+          import urllib.parse
 
-          u = os.environ['GIT_USER'].strip()
-          p = os.environ['GITEE_TOKEN'].strip()
+          token = os.environ['GITEE_TOKEN'].strip()
           repo = os.environ['GITEE_REPO_PATH'].strip()
-          if not u or not p:
-              raise SystemExit('GIT_USER and GITEE_TOKEN must be non-empty after strip (use Gitee login or email + private token).')
-          # git help credential：path 为 URL 路径去掉前导 /（如 rur011/blog.git）
-          path = f'{repo}.git' if not repo.endswith('.git') else repo
-          payload = f'protocol=https\nhost=gitee.com\npath={path}\nusername={u}\npassword={p}\n'
-          subprocess.run(
-              ['git', 'credential', 'approve'],
-              input=payload,
-              text=True,
-              check=True,
-              env={**os.environ, 'GIT_TERMINAL_PROMPT': '0'},
-          )
+          branch = os.environ['GITEE_PAGES_BRANCH'].strip()
+          login = os.environ.get('GITEE_GIT_LOGIN', '').strip()
+          if not token or not repo:
+              raise SystemExit('GITEE_TOKEN and GITEE_REPO must be non-empty.')
+
+          if not repo.endswith('.git'):
+              repo = f'{repo}.git'
+
+          def push_url(username: str, password: str) -> str:
+              u = urllib.parse.quote(username, safe='')
+              p = urllib.parse.quote(password, safe='')
+              return f'https://{u}:{p}@gitee.com/{repo}'
+
+          attempts: list[tuple[str, str]] = [('oauth2', token)]
+          if login and login != 'oauth2':
+              attempts.append((login, token))
+
+          for i, (user, pwd) in enumerate(attempts):
+              url = push_url(user, pwd)
+              print(f'HTTPS push attempt {i + 1}/{len(attempts)}: username={user!r} (password omitted)')
+              last = subprocess.run(
+                  ['git', 'push', '-f', url, branch],
+                  env={**os.environ, 'GIT_TERMINAL_PROMPT': '0'},
+              ).returncode
+              if last == 0:
+                  break
+
+          raise SystemExit(last)
           PY
-
-          echo "Pushing to gitee.com/${REPO}.git (branch ${GITEE_PAGES_BRANCH}, user ${GIT_USER})"
-
-          git push -f "https://gitee.com/${REPO}.git" "${GITEE_PAGES_BRANCH}"
