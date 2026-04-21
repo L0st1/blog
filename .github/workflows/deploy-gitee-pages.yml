@@ -70,7 +70,25 @@ jobs:
           fi
 
           GIT_USER="${GITEE_GIT_USER:-oauth2}"
-          ENC_TOKEN=$(python3 -c "import urllib.parse, os; print(urllib.parse.quote(os.environ['GITEE_TOKEN'], safe=''))")
+          # 令牌若含 @、:、% 等，拼进 https://user:pass@host 会被误解析（曾出现 host 变成 owner、DNS 报 rur011）。
+          # 先启用 store，再用 git credential approve 写入凭据，最后用无账号信息的 URL 推送。
+          git config --global credential.helper store
+          export GIT_USER
+          python3 << 'PY'
+          import os
+          import subprocess
+
+          u = os.environ['GIT_USER']
+          p = os.environ['GITEE_TOKEN']
+          payload = f'protocol=https\nhost=gitee.com\nusername={u}\npassword={p}\n'
+          subprocess.run(
+              ['git', 'credential', 'approve'],
+              input=payload,
+              text=True,
+              check=True,
+              env={**os.environ, 'GIT_TERMINAL_PROMPT': '0'},
+          )
+          PY
 
           echo "Pushing to gitee.com/${REPO}.git (branch ${GITEE_PAGES_BRANCH}, user ${GIT_USER})"
 
@@ -81,4 +99,4 @@ jobs:
           git add -A
           git commit -m "chore: deploy ${{ github.sha }}"
           git branch -M "${GITEE_PAGES_BRANCH}"
-          git push -f "https://${GIT_USER}:${ENC_TOKEN}@gitee.com/${REPO}.git" "${GITEE_PAGES_BRANCH}"
+          git push -f "https://gitee.com/${REPO}.git" "${GITEE_PAGES_BRANCH}"
