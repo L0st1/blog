@@ -5,8 +5,9 @@
 # 2. GitHub → Settings → Secrets and variables → Actions → Repository secrets：
 #    - GITEE_TOKEN：Gitee 私人令牌（需具备该仓库 push 权限；创建时勾选 projects）。
 #    - GITEE_REPO：仅填 owner/repo（如 rur011/blog-pages）。勿填完整 URL、勿带 .git、勿首尾空格。
-#    - GITEE_GIT_USER（可选）：HTTPS 用户名。Gitee 常报「token username invalid」时不要用 oauth2，应填 Gitee 登录名。
-#      未设置时默认用 GITEE_REPO 的 owner（如 rur011/blog-pages → rur011）。组织仓库若令牌属个人，请显式填登录名。
+#    - GITEE_GIT_USER（可选）：HTTPS 用户名 = Gitee「登录名」或「注册邮箱」（与令牌所属账号一致）。勿留空 Secret；勿填 oauth2。
+#      未设置时默认用 GITEE_REPO 的 owner。若仍 403，请显式填个人主页上的用户名或邮箱。
+#    - GITEE_SSH_PRIVATE_KEY（可选）：若 HTTPS 始终失败，在 Gitee 仓库部署公钥后，将私钥整段放入此 Secret，将改用 SSH 推送（更稳）。
 # 3. GitHub → Settings → Secrets and variables → Actions → Repository variables（可选）：
 #    - NUXT_APP_BASE_URL：仅「项目 Pages」子路径（如 https://user.gitee.io/repo/）时设为 /repo/；用户/组织主页留空或 /。
 #    - GITEE_PAGES_BRANCH：推送的静态分支名，默认 pages。
@@ -51,10 +52,10 @@ jobs:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
           GITEE_REPO: ${{ secrets.GITEE_REPO }}
           GITEE_GIT_USER: ${{ secrets.GITEE_GIT_USER }}
+          GITEE_SSH_PRIVATE_KEY: ${{ secrets.GITEE_SSH_PRIVATE_KEY }}
           GITEE_PAGES_BRANCH: ${{ vars.GITEE_PAGES_BRANCH || 'pages' }}
         run: |
           set -euo pipefail
-          test -n "${GITEE_TOKEN}" || (echo 'Missing secret GITEE_TOKEN' && exit 1)
           test -n "${GITEE_REPO}" || (echo 'Missing secret GITEE_REPO' && exit 1)
 
           REPO=$(echo "${GITEE_REPO}" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
@@ -71,18 +72,50 @@ jobs:
           fi
 
           REPO_OWNER="${REPO%%/*}"
-          GIT_USER="${GITEE_GIT_USER:-${REPO_OWNER}}"
-          # 令牌若含 @、:、% 等，拼进 https://user:pass@host 会被误解析（曾出现 host 变成 owner、DNS 报 rur011）。
-          # 先启用 store，再用 git credential approve 写入凭据，最后用无账号信息的 URL 推送。
+          # GitHub 若存在「空的」GITEE_GIT_USER secret，${VAR:-default} 不会回退，会得到空用户名。
+          GIT_USER="${GITEE_GIT_USER:-}"
+          if [ -z "${GIT_USER}" ]; then
+            GIT_USER="${REPO_OWNER}"
+          fi
+
+          cd .output/public
+          git init
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add -A
+          git commit -m "chore: deploy ${{ github.sha }}"
+          git branch -M "${GITEE_PAGES_BRANCH}"
+
+          if [ -n "${GITEE_SSH_PRIVATE_KEY:-}" ]; then
+            echo 'Using SSH deploy key (GITEE_SSH_PRIVATE_KEY).'
+            mkdir -p "${HOME}/.ssh"
+            printf '%s\n' "${GITEE_SSH_PRIVATE_KEY}" > "${HOME}/.ssh/gitee_deploy"
+            chmod 600 "${HOME}/.ssh/gitee_deploy"
+            ssh-keyscan -t rsa,ecdsa,ed25519 gitee.com >> "${HOME}/.ssh/known_hosts" 2>/dev/null || true
+            export GIT_SSH_COMMAND='ssh -i ~/.ssh/gitee_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new'
+            git push -f "git@gitee.com:${REPO}.git" "${GITEE_PAGES_BRANCH}"
+            exit 0
+          fi
+
+          test -n "${GITEE_TOKEN}" || (echo 'Missing GITEE_TOKEN (or set GITEE_SSH_PRIVATE_KEY for SSH).' && exit 1)
+
+          # HTTPS：用户名=登录名或邮箱，密码=私人令牌；path 与 useHttpPath 便于与 push URL 匹配。
           git config --global credential.helper store
+          git config --global credential.useHttpPath true
           export GIT_USER
+          export GITEE_REPO_PATH="${REPO}"
           python3 << 'PY'
           import os
           import subprocess
 
-          u = os.environ['GIT_USER']
-          p = os.environ['GITEE_TOKEN']
-          payload = f'protocol=https\nhost=gitee.com\nusername={u}\npassword={p}\n'
+          u = os.environ['GIT_USER'].strip()
+          p = os.environ['GITEE_TOKEN'].strip()
+          repo = os.environ['GITEE_REPO_PATH'].strip()
+          if not u or not p:
+              raise SystemExit('GIT_USER and GITEE_TOKEN must be non-empty after strip (use Gitee login or email + private token).')
+          # git help credential：path 为 URL 路径去掉前导 /（如 rur011/blog.git）
+          path = f'{repo}.git' if not repo.endswith('.git') else repo
+          payload = f'protocol=https\nhost=gitee.com\npath={path}\nusername={u}\npassword={p}\n'
           subprocess.run(
               ['git', 'credential', 'approve'],
               input=payload,
@@ -94,11 +127,4 @@ jobs:
 
           echo "Pushing to gitee.com/${REPO}.git (branch ${GITEE_PAGES_BRANCH}, user ${GIT_USER})"
 
-          cd .output/public
-          git init
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
-          git add -A
-          git commit -m "chore: deploy ${{ github.sha }}"
-          git branch -M "${GITEE_PAGES_BRANCH}"
           git push -f "https://gitee.com/${REPO}.git" "${GITEE_PAGES_BRANCH}"
