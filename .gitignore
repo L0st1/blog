@@ -15,3 +15,6 @@ dist
 
 # 写作中
 content/writing/**
+
+# Playwright 运行证据
+/artifacts/playwright/
